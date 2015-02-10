@@ -6,15 +6,14 @@ from botchallenge import BlockType
 from botchallenge import Dir
 # from botchallenge import Location
 
-USERNAME = "rafi0t"  # Put your minecraft username here
-SERVER = "localhost"  # Put the address of the minecraft server here
+USERNAME = ""  # Put your minecraft username here
+SERVER = ""  # Put the address of the minecraft server here
 robot = Robot(USERNAME, SERVER)
 
 # 1. What do you want to mine?
 
 elements = [BlockType.DIAMOND, BlockType.GOLD_ORE, BlockType.IRON_ORE,
             BlockType.COAL_ORE]
-
 
 # 2. Look for the blocks, and stop as soon as we have something
 
@@ -163,6 +162,7 @@ def lookup(elements):
         locations = robot.find_type_nearby(e)
         if len(locations) > 0:
             return locations
+    return None
 
 # At this point, we have:
 # * the list of elements we are looking for
@@ -199,8 +199,26 @@ def main():
     origin = robot.get_location()
     while not too_far(origin, 50):
         locations = lookup(elements)
-        if locations is None or len(locations) == 0:
+        if locations is None:
             rand_dig(5)
             continue
         get_blocks(locations)
         robot.get_inventory()
+
+
+# 5. Let's go back to the origin.
+# We want to use the same kind of stuff as for the mining but with one location.
+# So we will do some refactoring
+
+
+def get_blocks(locations):
+    for loc in locations:
+        goto(loc)
+
+
+def goto(location):
+    while True:
+        direction = robot.get_location().direction(location)
+        if direction is None:
+            break
+        force_move(direction)
