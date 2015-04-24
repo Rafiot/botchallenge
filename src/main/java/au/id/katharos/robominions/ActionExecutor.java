@@ -48,6 +48,8 @@ public class ActionExecutor implements Runnable {
 					}
 				} else if (actionRequest.hasTeleportLocation()) {
 					success = robot.teleport(actionRequest.getTeleportLocation());
+				} else if (actionRequest.hasDropMaterial()) {
+					success = robot.drop_item(Util.toBukkitMaterial(actionRequest.getDropMaterial()), actionRequest.getDropAmount());
 				}
 				event.getListener().call(new ActionQueue.ActionResult(event.getKey(), success));
 			} else {
