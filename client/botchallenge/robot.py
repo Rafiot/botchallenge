@@ -177,6 +177,14 @@ class Robot(object):
         request.action_request.teleport_location.absolute_location.z = location.z_coord
         return self._action(request).success
 
+    def drop_item(self, blocktype, amount):
+        """Drop a stack of blocktype next to the robot"""
+        request = self._new_action()
+        request.action_request.drop_material.type = blocktype.value
+        request.action_request.drop_amount = amount
+        return self._action(request).success
+
+
 
 class Location(object):
     """A location in the Minecraft world as a set of 3D coordinates."""

@@ -441,4 +441,38 @@ public abstract class AbstractRobot implements InventoryHolder {
 		}
 		return success;
 	}
+
+	/**
+	 * Drops an item stack 2 blocks in from of the Robot
+	 * @param material The material to drop
+	 * @param amount the number of blocks to drop
+	 * @return True if drop location is free of blocks
+	 */
+	public boolean drop_item(Material material, int amount) {
+		Vector directionVector = directionMap.get(getAbsoluteDirection(this.facingDirection, Direction.FORWARD)).clone();
+		directionVector.multiply(3); // need to throw it 3 blocks away so the Robot doesn't grab it
+		Location loc = this.location.clone().add(directionVector);
+		Block block = getBlockAt(loc);
+		boolean success = !block.getType().isSolid();
+
+		if (success && inventory.contains(material, amount)) {
+			int amountDropped  = 0;
+			while (amountDropped < amount) {
+				int stackNumber = inventory.first(material);
+				ItemStack itemStack = inventory.getItem(stackNumber);
+				if (itemStack.getAmount() > (amount-amountDropped)) {
+					itemStack.setAmount(itemStack.getAmount() - (amount-amountDropped));
+					amountDropped = amount;
+				} else {
+					amountDropped += itemStack.getAmount();
+					inventory.clear(stackNumber);
+				}
+			}
+			this.world.dropItem(loc, new ItemStack(material, amount));
+			logger.warning("Dropping items at "+loc.toString());
+		} else {
+			logger.warning("Robot doesn't have "+amount+" of that material");
+		}
+		return success;
+	}
 }

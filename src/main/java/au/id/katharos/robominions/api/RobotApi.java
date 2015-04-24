@@ -4015,6 +4015,28 @@ public final class RobotApi {
      * <code>optional .robominions.WorldLocation teleport_location = 9;</code>
      */
     au.id.katharos.robominions.api.RobotApi.WorldLocationOrBuilder getTeleportLocationOrBuilder();
+
+    /**
+     * <code>optional .robominions.Material drop_material = 10;</code>
+     */
+    boolean hasDropMaterial();
+    /**
+     * <code>optional .robominions.Material drop_material = 10;</code>
+     */
+    au.id.katharos.robominions.api.Materials.Material getDropMaterial();
+    /**
+     * <code>optional .robominions.Material drop_material = 10;</code>
+     */
+    au.id.katharos.robominions.api.Materials.MaterialOrBuilder getDropMaterialOrBuilder();
+
+    /**
+     * <code>optional int32 drop_amount = 11;</code>
+     */
+    boolean hasDropAmount();
+    /**
+     * <code>optional int32 drop_amount = 11;</code>
+     */
+    int getDropAmount();
   }
   /**
    * Protobuf type {@code robominions.RobotActionRequest}
@@ -4147,6 +4169,24 @@ public final class RobotApi {
                 teleportLocation_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000080;
+              break;
+            }
+            case 82: {
+              au.id.katharos.robominions.api.Materials.Material.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000100) == 0x00000100)) {
+                subBuilder = dropMaterial_.toBuilder();
+              }
+              dropMaterial_ = input.readMessage(au.id.katharos.robominions.api.Materials.Material.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(dropMaterial_);
+                dropMaterial_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000100;
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000200;
+              dropAmount_ = input.readInt32();
               break;
             }
           }
@@ -4348,6 +4388,42 @@ public final class RobotApi {
       return teleportLocation_;
     }
 
+    public static final int DROP_MATERIAL_FIELD_NUMBER = 10;
+    private au.id.katharos.robominions.api.Materials.Material dropMaterial_;
+    /**
+     * <code>optional .robominions.Material drop_material = 10;</code>
+     */
+    public boolean hasDropMaterial() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional .robominions.Material drop_material = 10;</code>
+     */
+    public au.id.katharos.robominions.api.Materials.Material getDropMaterial() {
+      return dropMaterial_;
+    }
+    /**
+     * <code>optional .robominions.Material drop_material = 10;</code>
+     */
+    public au.id.katharos.robominions.api.Materials.MaterialOrBuilder getDropMaterialOrBuilder() {
+      return dropMaterial_;
+    }
+
+    public static final int DROP_AMOUNT_FIELD_NUMBER = 11;
+    private int dropAmount_;
+    /**
+     * <code>optional int32 drop_amount = 11;</code>
+     */
+    public boolean hasDropAmount() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional int32 drop_amount = 11;</code>
+     */
+    public int getDropAmount() {
+      return dropAmount_;
+    }
+
     private void initFields() {
       moveDirection_ = au.id.katharos.robominions.api.RobotApi.WorldLocation.Direction.UP;
       turnDirection_ = au.id.katharos.robominions.api.RobotApi.WorldLocation.Direction.UP;
@@ -4357,6 +4433,8 @@ public final class RobotApi {
       chatMessage_ = "";
       isPublicMessage_ = false;
       teleportLocation_ = au.id.katharos.robominions.api.RobotApi.WorldLocation.getDefaultInstance();
+      dropMaterial_ = au.id.katharos.robominions.api.Materials.Material.getDefaultInstance();
+      dropAmount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4401,6 +4479,12 @@ public final class RobotApi {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeMessage(9, teleportLocation_);
       }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeMessage(10, dropMaterial_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeInt32(11, dropAmount_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -4441,6 +4525,14 @@ public final class RobotApi {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, teleportLocation_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, dropMaterial_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, dropAmount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4553,6 +4645,7 @@ public final class RobotApi {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getPlaceMaterialFieldBuilder();
           getTeleportLocationFieldBuilder();
+          getDropMaterialFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4585,6 +4678,14 @@ public final class RobotApi {
           teleportLocationBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000080);
+        if (dropMaterialBuilder_ == null) {
+          dropMaterial_ = au.id.katharos.robominions.api.Materials.Material.getDefaultInstance();
+        } else {
+          dropMaterialBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        dropAmount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -4653,6 +4754,18 @@ public final class RobotApi {
         } else {
           result.teleportLocation_ = teleportLocationBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        if (dropMaterialBuilder_ == null) {
+          result.dropMaterial_ = dropMaterial_;
+        } else {
+          result.dropMaterial_ = dropMaterialBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.dropAmount_ = dropAmount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4694,6 +4807,12 @@ public final class RobotApi {
         }
         if (other.hasTeleportLocation()) {
           mergeTeleportLocation(other.getTeleportLocation());
+        }
+        if (other.hasDropMaterial()) {
+          mergeDropMaterial(other.getDropMaterial());
+        }
+        if (other.hasDropAmount()) {
+          setDropAmount(other.getDropAmount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5206,6 +5325,154 @@ public final class RobotApi {
           teleportLocation_ = null;
         }
         return teleportLocationBuilder_;
+      }
+
+      private au.id.katharos.robominions.api.Materials.Material dropMaterial_ = au.id.katharos.robominions.api.Materials.Material.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          au.id.katharos.robominions.api.Materials.Material, au.id.katharos.robominions.api.Materials.Material.Builder, au.id.katharos.robominions.api.Materials.MaterialOrBuilder> dropMaterialBuilder_;
+      /**
+       * <code>optional .robominions.Material drop_material = 10;</code>
+       */
+      public boolean hasDropMaterial() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional .robominions.Material drop_material = 10;</code>
+       */
+      public au.id.katharos.robominions.api.Materials.Material getDropMaterial() {
+        if (dropMaterialBuilder_ == null) {
+          return dropMaterial_;
+        } else {
+          return dropMaterialBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .robominions.Material drop_material = 10;</code>
+       */
+      public Builder setDropMaterial(au.id.katharos.robominions.api.Materials.Material value) {
+        if (dropMaterialBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dropMaterial_ = value;
+          onChanged();
+        } else {
+          dropMaterialBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .robominions.Material drop_material = 10;</code>
+       */
+      public Builder setDropMaterial(
+          au.id.katharos.robominions.api.Materials.Material.Builder builderForValue) {
+        if (dropMaterialBuilder_ == null) {
+          dropMaterial_ = builderForValue.build();
+          onChanged();
+        } else {
+          dropMaterialBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .robominions.Material drop_material = 10;</code>
+       */
+      public Builder mergeDropMaterial(au.id.katharos.robominions.api.Materials.Material value) {
+        if (dropMaterialBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100) &&
+              dropMaterial_ != au.id.katharos.robominions.api.Materials.Material.getDefaultInstance()) {
+            dropMaterial_ =
+              au.id.katharos.robominions.api.Materials.Material.newBuilder(dropMaterial_).mergeFrom(value).buildPartial();
+          } else {
+            dropMaterial_ = value;
+          }
+          onChanged();
+        } else {
+          dropMaterialBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .robominions.Material drop_material = 10;</code>
+       */
+      public Builder clearDropMaterial() {
+        if (dropMaterialBuilder_ == null) {
+          dropMaterial_ = au.id.katharos.robominions.api.Materials.Material.getDefaultInstance();
+          onChanged();
+        } else {
+          dropMaterialBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        return this;
+      }
+      /**
+       * <code>optional .robominions.Material drop_material = 10;</code>
+       */
+      public au.id.katharos.robominions.api.Materials.Material.Builder getDropMaterialBuilder() {
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return getDropMaterialFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .robominions.Material drop_material = 10;</code>
+       */
+      public au.id.katharos.robominions.api.Materials.MaterialOrBuilder getDropMaterialOrBuilder() {
+        if (dropMaterialBuilder_ != null) {
+          return dropMaterialBuilder_.getMessageOrBuilder();
+        } else {
+          return dropMaterial_;
+        }
+      }
+      /**
+       * <code>optional .robominions.Material drop_material = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          au.id.katharos.robominions.api.Materials.Material, au.id.katharos.robominions.api.Materials.Material.Builder, au.id.katharos.robominions.api.Materials.MaterialOrBuilder> 
+          getDropMaterialFieldBuilder() {
+        if (dropMaterialBuilder_ == null) {
+          dropMaterialBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              au.id.katharos.robominions.api.Materials.Material, au.id.katharos.robominions.api.Materials.Material.Builder, au.id.katharos.robominions.api.Materials.MaterialOrBuilder>(
+                  getDropMaterial(),
+                  getParentForChildren(),
+                  isClean());
+          dropMaterial_ = null;
+        }
+        return dropMaterialBuilder_;
+      }
+
+      private int dropAmount_ ;
+      /**
+       * <code>optional int32 drop_amount = 11;</code>
+       */
+      public boolean hasDropAmount() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 drop_amount = 11;</code>
+       */
+      public int getDropAmount() {
+        return dropAmount_;
+      }
+      /**
+       * <code>optional int32 drop_amount = 11;</code>
+       */
+      public Builder setDropAmount(int value) {
+        bitField0_ |= 0x00000200;
+        dropAmount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 drop_amount = 11;</code>
+       */
+      public Builder clearDropAmount() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        dropAmount_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:robominions.RobotActionRequest)
@@ -9048,7 +9315,7 @@ public final class RobotApi {
       "\025\n\rget_inventory\030\005 \001(\010\022,\n\010is_solid\030\006 \001(\013" +
       "2\032.robominions.WorldLocation\022\"\n\032locate_p",
       "layer_target_block\030\007 \001(\010\"\035\n\006Entity\022\010\n\004SE" +
-      "LF\020\000\022\t\n\005OWNER\020\001\"\244\003\n\022RobotActionRequest\022<" +
+      "LF\020\000\022\t\n\005OWNER\020\001\"\347\003\n\022RobotActionRequest\022<" +
       "\n\016move_direction\030\002 \001(\0162$.robominions.Wor" +
       "ldLocation.Direction\022<\n\016turn_direction\030\003" +
       " \001(\0162$.robominions.WorldLocation.Directi" +
@@ -9058,31 +9325,33 @@ public final class RobotApi {
       "rection\022-\n\016place_material\030\006 \001(\0132\025.robomi" +
       "nions.Material\022\024\n\014chat_message\030\007 \001(\t\022\031\n\021",
       "is_public_message\030\010 \001(\010\0225\n\021teleport_loca" +
-      "tion\030\t \001(\0132\032.robominions.WorldLocation\"A" +
-      "\n\020LocationResponse\022-\n\tlocations\030\001 \003(\0132\032." +
-      "robominions.WorldLocation\"Q\n\021InventoryRe" +
-      "sponse\022(\n\tmaterials\030\001 \003(\0132\025.robominions." +
-      "Material\022\022\n\006counts\030\002 \003(\005B\002\020\001\"\241\002\n\rRobotRe" +
-      "sponse\022\013\n\003key\030\003 \001(\005\022\017\n\007success\030\001 \001(\010\0220\n\r" +
-      "error_message\030\002 \001(\0132\031.robominions.ErrorM" +
-      "essage\0228\n\021location_response\030\004 \001(\0132\035.robo" +
-      "minions.LocationResponse\0220\n\021material_res",
-      "ponse\030\005 \001(\0132\025.robominions.Material\022:\n\022in" +
-      "ventory_response\030\006 \001(\0132\036.robominions.Inv" +
-      "entoryResponse\022\030\n\020boolean_response\030\007 \001(\010" +
-      "\"\302\003\n\014ErrorMessage\0220\n\006reason\030\001 \001(\0162 .robo" +
-      "minions.ErrorMessage.Reason\0220\n\006action\030\002 " +
-      "\001(\0162 .robominions.ErrorMessage.Action\022\017\n" +
-      "\007message\030\003 \001(\t\"\376\001\n\006Reason\022\013\n\007UNKNOWN\020\000\022\020" +
-      "\n\014SERVER_ERROR\020\001\022\026\n\022UNREADABLE_REQUEST\020\002" +
-      "\022\023\n\017INVALID_REQUEST\020\003\022\023\n\017BLOCK_COLLISION" +
-      "\020\004\022\024\n\020OUTSIDE_OF_WORLD\020\005\022\030\n\024ROBOT_DOES_N",
-      "OT_EXIST\020\006\022\032\n\026BLOCK_IS_NOT_REACHABLE\020\007\022\030" +
-      "\n\024BLOCK_IS_NOT_VISIBLE\020\010\022\023\n\017NOT_IMPLEMEN" +
-      "TED\020\t\022\030\n\024OWNER_DOES_NOT_EXIST\020\n\"<\n\006Actio" +
-      "n\022\017\n\013FAIL_ACTION\020\000\022\020\n\014RETRY_ACTION\020\001\022\017\n\013" +
-      "EXIT_CLIENT\020\002B*\n\036au.id.katharos.robomini" +
-      "ons.apiB\010RobotApi"
+      "tion\030\t \001(\0132\032.robominions.WorldLocation\022," +
+      "\n\rdrop_material\030\n \001(\0132\025.robominions.Mate" +
+      "rial\022\023\n\013drop_amount\030\013 \001(\005\"A\n\020LocationRes" +
+      "ponse\022-\n\tlocations\030\001 \003(\0132\032.robominions.W" +
+      "orldLocation\"Q\n\021InventoryResponse\022(\n\tmat" +
+      "erials\030\001 \003(\0132\025.robominions.Material\022\022\n\006c" +
+      "ounts\030\002 \003(\005B\002\020\001\"\241\002\n\rRobotResponse\022\013\n\003key" +
+      "\030\003 \001(\005\022\017\n\007success\030\001 \001(\010\0220\n\rerror_message" +
+      "\030\002 \001(\0132\031.robominions.ErrorMessage\0228\n\021loc",
+      "ation_response\030\004 \001(\0132\035.robominions.Locat" +
+      "ionResponse\0220\n\021material_response\030\005 \001(\0132\025" +
+      ".robominions.Material\022:\n\022inventory_respo" +
+      "nse\030\006 \001(\0132\036.robominions.InventoryRespons" +
+      "e\022\030\n\020boolean_response\030\007 \001(\010\"\302\003\n\014ErrorMes" +
+      "sage\0220\n\006reason\030\001 \001(\0162 .robominions.Error" +
+      "Message.Reason\0220\n\006action\030\002 \001(\0162 .robomin" +
+      "ions.ErrorMessage.Action\022\017\n\007message\030\003 \001(" +
+      "\t\"\376\001\n\006Reason\022\013\n\007UNKNOWN\020\000\022\020\n\014SERVER_ERRO" +
+      "R\020\001\022\026\n\022UNREADABLE_REQUEST\020\002\022\023\n\017INVALID_R",
+      "EQUEST\020\003\022\023\n\017BLOCK_COLLISION\020\004\022\024\n\020OUTSIDE" +
+      "_OF_WORLD\020\005\022\030\n\024ROBOT_DOES_NOT_EXIST\020\006\022\032\n" +
+      "\026BLOCK_IS_NOT_REACHABLE\020\007\022\030\n\024BLOCK_IS_NO" +
+      "T_VISIBLE\020\010\022\023\n\017NOT_IMPLEMENTED\020\t\022\030\n\024OWNE" +
+      "R_DOES_NOT_EXIST\020\n\"<\n\006Action\022\017\n\013FAIL_ACT" +
+      "ION\020\000\022\020\n\014RETRY_ACTION\020\001\022\017\n\013EXIT_CLIENT\020\002" +
+      "B*\n\036au.id.katharos.robominions.apiB\010Robo" +
+      "tApi"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9126,7 +9395,7 @@ public final class RobotApi {
     internal_static_robominions_RobotActionRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_robominions_RobotActionRequest_descriptor,
-        new java.lang.String[] { "MoveDirection", "TurnDirection", "MineDirection", "PlaceDirection", "PlaceMaterial", "ChatMessage", "IsPublicMessage", "TeleportLocation", });
+        new java.lang.String[] { "MoveDirection", "TurnDirection", "MineDirection", "PlaceDirection", "PlaceMaterial", "ChatMessage", "IsPublicMessage", "TeleportLocation", "DropMaterial", "DropAmount", });
     internal_static_robominions_LocationResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_robominions_LocationResponse_fieldAccessorTable = new
