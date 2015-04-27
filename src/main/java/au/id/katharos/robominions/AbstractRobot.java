@@ -143,9 +143,9 @@ public abstract class AbstractRobot implements InventoryHolder {
 			return false;
 		}
 		// Any block less than 10 blocks away is visible.
-		if (loc.distance(location.getBlock().getLocation()) > 10) {
-			return false;
-		}
+		// if (loc.distance(location.getBlock().getLocation()) > 10) {
+		//	 return false;
+		// }
 		return true;
 	}
 

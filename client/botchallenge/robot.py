@@ -184,6 +184,18 @@ class Robot(object):
         request.action_request.drop_amount = amount
         return self._action(request).success
 
+    def get_block_type_at(self, location):
+        """Find the type of the block at the given location."""
+        request = self._new_action()
+        request.read_request.identify_material.absolute_location.x = location.x_coord
+        request.read_request.identify_material.absolute_location.y = location.y_coord
+        request.read_request.identify_material.absolute_location.z = location.z_coord
+        material_id = self._action(request).material_response.type
+        if material_id in BlockType.value_map:
+            return BlockType.value_map[material_id]
+        logging.warn("Unrecognized block type: %d", material_id)
+        return None
+
 
 
 class Location(object):
