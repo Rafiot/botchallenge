@@ -185,7 +185,7 @@ class Robot(object):
         return self._action(request).success
 
     def get_block_type_at(self, location):
-        """Find the type of the adjacent block in the given direction."""
+        """Find the type of the block at the given location."""
         request = self._new_action()
         request.read_request.identify_material.absolute_location.x = location.x_coord
         request.read_request.identify_material.absolute_location.y = location.y_coord
