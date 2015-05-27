@@ -80,6 +80,8 @@ message RobotActionRequest {
 
   optional Material drop_material = 10;
   optional int32 drop_amount = 11;
+
+  optional WorldLocation attack_location = 12;
 }
 
 message LocationResponse {
