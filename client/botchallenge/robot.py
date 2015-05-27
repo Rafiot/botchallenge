@@ -196,6 +196,14 @@ class Robot(object):
         logging.warn("Unrecognized block type: %d", material_id)
         return None
 
+    def attack(self, location):
+        """Launches a fireball at a location."""
+        request = self._new_action()
+        request.action_request.attack_location.absolute_location.x = location.x_coord
+        request.action_request.attack_location.absolute_location.y = location.y_coord
+        request.action_request.attack_location.absolute_location.z = location.z_coord
+        return self._action(request).success
+
 
 
 class Location(object):
