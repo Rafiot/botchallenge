@@ -482,20 +482,20 @@ public abstract class AbstractRobot implements InventoryHolder {
 	 * @param the WorldLocation of the target
 	 * @return True 
 	 */
-	public boolean attack(WorldLocation target_location) {
-		Vector offset = new Vector(0,2,0);
-		Vector currentLocationVec = location.toVector()+offset;
-		Vector targetLocationVec = new Vector(world_loc.getAbsoluteLocation().getX(), 
-											  world_loc.getAbsoluteLocation().getY(), 
-											  world_loc.getAbsoluteLocation().getZ());
+	public boolean attack(WorldLocation target_loc) {
+		Vector offset = new Vector(0,1,0);
+		Vector currentLocationVec = location.toVector().add(offset);
+		Vector targetLocationVec = new Vector(target_loc.getAbsoluteLocation().getX(), 
+											  target_loc.getAbsoluteLocation().getY(), 
+											  target_loc.getAbsoluteLocation().getZ());
 		double deltaZ = targetLocationVec.getZ() - currentLocationVec.getZ();
 		double deltaY = targetLocationVec.getY() - currentLocationVec.getY();
 		double deltaX = targetLocationVec.getX() - currentLocationVec.getX();
 		double distance = Math.sqrt(deltaZ * deltaZ + deltaX * deltaX);
 		double pitch = Math.asin(deltaY/distance);
 		double yaw = Math.atan2(deltaX, deltaZ);
-		Vector projectileVector = currentLocationVec.toLocation(world, yaw, pitch);
-		Fireball fireball = world.spawn(projectileVector, Fireball.class);
-		return True;
+		Location projectileLocation = currentLocationVec.toLocation(world, (float)yaw, (float)pitch);
+		Fireball fireball = world.spawn(projectileLocation, Fireball.class);
+		return true;
 	}
 }
