@@ -483,19 +483,50 @@ public abstract class AbstractRobot implements InventoryHolder {
 	 * @return True 
 	 */
 	public boolean attack(WorldLocation target_loc) {
-		Vector offset = new Vector(0,1,0);
-		Vector currentLocationVec = location.toVector().add(offset);
-		Vector targetLocationVec = new Vector(target_loc.getAbsoluteLocation().getX(), 
-											  target_loc.getAbsoluteLocation().getY(), 
-											  target_loc.getAbsoluteLocation().getZ());
-		double deltaZ = targetLocationVec.getZ() - currentLocationVec.getZ();
-		double deltaY = targetLocationVec.getY() - currentLocationVec.getY();
-		double deltaX = targetLocationVec.getX() - currentLocationVec.getX();
+		
+		Vector offset = new Vector(0,0,0);
+		Location targetLocation = new Location(world,
+											target_loc.getAbsoluteLocation().getX()+0.5, 
+											target_loc.getAbsoluteLocation().getY()+0.99, 
+											target_loc.getAbsoluteLocation().getZ()+0.5);
+		double deltaZ = targetLocation.getZ() - location.getZ();
+		double deltaY = targetLocation.getY() - location.getY();
+		double deltaX = targetLocation.getX() - location.getX();
+
+		// Face the direction that is closest to the target direction
+		if (Math.abs(deltaX) > Math.abs(deltaZ)) {
+			if (deltaX > 0) {
+				turn(Direction.EAST);
+				offset = new Vector(1,0,0);
+			} else {
+				turn(Direction.WEST);
+				offset = new Vector(-1,0,0);
+			}
+		} else {
+			if (deltaZ > 0) {
+				turn(Direction.SOUTH);
+				offset = new Vector(0,0,1);
+			} else {
+				turn(Direction.NORTH);
+				offset = new Vector(0,0,-1);
+			}
+		}
+		// calculate new deltas with new offset
+		Location launchLocation = location.clone().add(offset).clone();
+		deltaZ = targetLocation.getZ() - launchLocation.getZ();
+		deltaY = targetLocation.getY() - launchLocation.getY();
+		deltaX = targetLocation.getX() - launchLocation.getX();
+
 		double distance = Math.sqrt(deltaZ * deltaZ + deltaX * deltaX);
-		double pitch = Math.asin(deltaY/distance);
-		double yaw = Math.atan2(deltaX, deltaZ);
-		Location projectileLocation = currentLocationVec.toLocation(world, (float)yaw, (float)pitch);
-		Fireball fireball = world.spawn(projectileLocation, Fireball.class);
+		double pitch = Math.toDegrees(Math.atan2(distance, deltaY) - Math.PI/2);
+		double yaw = Math.toDegrees(Math.atan2(deltaZ, deltaX) - Math.PI/2);
+		logger.warning("Attacking "+targetLocation.toString());
+		logger.warning("launching projectile, yaw="+yaw+", pitch="+pitch);
+
+		launchLocation.setPitch((float)pitch);
+		launchLocation.setYaw((float)yaw);
+
+		Fireball fireball = world.spawn(launchLocation, Fireball.class);
 		return true;
 	}
 }
