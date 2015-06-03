@@ -104,6 +104,42 @@ message RobotResponse {
   optional bool boolean_response = 7;
 }
 
+message Entity {
+  enum EntityType {
+    CHICKEN = 0;
+    COW = 1;
+    HORSE = 2;
+    OCELOT = 3;
+    PIG = 4;
+    RABBIT = 5;
+    SHEEP = 6;
+    WOLF = 7;
+    VILLAGER = 8;
+    IRONGOLEM = 9;
+    SNOWMAN = 10;
+    BLAZE = 11;
+    CREEPER = 12;
+    ENDERMAN = 13;
+    ENDERMITE = 14;
+    GIANT = 15;
+    GUARDIAN = 16;
+    SILVERFISH = 17;
+    SKELETON = 18;
+    SPIDER = 19;
+    WITCH = 20;
+    WITHER = 21;
+    ZOMBIE = 22;
+  }
+ 
+  optional EntityType type = 1;
+  optional Coordinate location = 2;
+  optional int32 id = 3;
+}
+
+message EntityResponse {
+  repeated Entity entities = 1;
+}
+
 message ErrorMessage {
   enum Reason {
   	UNKNOWN = 0;

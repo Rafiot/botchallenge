@@ -71,6 +71,16 @@ public class ReadExecutor {
 		}
 		return locResponse.build();
 	}
+
+	private EntityResponse buildEntityResponse(List<Entity> entities) {
+		EntityResponse.Builder entResponse = EntityResponse.newBuilder(); 
+		for (Entity ent : entities) {
+			Entity worldLocation = WorldLocation.newBuilder().setAbsoluteLocation(
+					Util.coordsFromLocation(loc)).build();
+			entResponse.addEntities(worldLocation);
+		}
+		return entResponse.build();
+	}
 	
 	public RobotResponse execute(String playerName, int key, RobotReadRequest readRequest) 
 		throws RobotRequestException {
