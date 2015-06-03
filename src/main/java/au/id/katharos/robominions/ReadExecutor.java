@@ -11,6 +11,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.entity.EntityType;
 
 import au.id.katharos.robominions.api.RobotApi.Coordinate;
 import au.id.katharos.robominions.api.RobotApi.ErrorMessage.Action;
@@ -21,6 +22,8 @@ import au.id.katharos.robominions.api.RobotApi.RobotReadRequest;
 import au.id.katharos.robominions.api.RobotApi.RobotReadRequest.Entity;
 import au.id.katharos.robominions.api.RobotApi.RobotResponse;
 import au.id.katharos.robominions.api.RobotApi.WorldLocation;
+import au.id.katharos.robominions.api.RobotApi.RoboEntity;
+import au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType;
 
 /**
  * The executor of read requests. These read requests happen asynchronously so that read-only
@@ -75,9 +78,12 @@ public class ReadExecutor {
 	private EntityResponse buildEntityResponse(List<Entity> entities) {
 		EntityResponse.Builder entResponse = EntityResponse.newBuilder(); 
 		for (Entity ent : entities) {
-			Entity worldLocation = WorldLocation.newBuilder().setAbsoluteLocation(
-					Util.coordsFromLocation(loc)).build();
-			entResponse.addEntities(worldLocation);
+			RoboEntity roboEntity = RoboEntity.newBuilder();
+			roboEntity.setType(Util.roboEntityTypeFromEntityType(ent.getType()));
+			roboEntity.setLocation(Util.coordsFromLocation(ent.getLocation()));
+			roboEntity.setId(ent.getEntityId());
+			roboEntity.build();
+			entResponse.addEntities(roboEntity);
 		}
 		return entResponse.build();
 	}
@@ -156,6 +162,14 @@ public class ReadExecutor {
 			LocationResponse locResponse = buildLocationResponse(locations);
 			response.setSuccess(true);
 			response.setLocationResponse(locResponse);
+		} else if (readRequest.hasFindEntities()) {
+			List<RoboEntity> roboEntities = readRequest.getFindEntitiesExamplesList();
+			EntityResponse entityResponse;
+			if (roboEntities.size() > 0) {
+
+			} else {
+				entityResponse = buildEntityResponse(world)
+			}
 		} else {
 			throw new RobotRequestException(Reason.INVALID_REQUEST, "The read request has no recognised request in it.");
 		}

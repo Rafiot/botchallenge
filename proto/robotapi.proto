@@ -64,6 +64,11 @@ message RobotReadRequest {
   optional WorldLocation is_solid = 6;
 
   optional bool locate_player_target_block = 7;
+
+  // Returns a list of entities
+  optional bool find_entities = 8;
+  repeated RoboEntity find_entities_examples = 9;
+
 }
 
 message RobotActionRequest {
@@ -104,8 +109,8 @@ message RobotResponse {
   optional bool boolean_response = 7;
 }
 
-message Entity {
-  enum EntityType {
+message RoboEntity {
+  enum RoboEntityType {
     CHICKEN = 0;
     COW = 1;
     HORSE = 2;
@@ -115,7 +120,7 @@ message Entity {
     SHEEP = 6;
     WOLF = 7;
     VILLAGER = 8;
-    IRONGOLEM = 9;
+    IRON_GOLEM = 9;
     SNOWMAN = 10;
     BLAZE = 11;
     CREEPER = 12;
@@ -129,15 +134,16 @@ message Entity {
     WITCH = 20;
     WITHER = 21;
     ZOMBIE = 22;
+    UNRECOGNIZED = 999;
   }
  
-  optional EntityType type = 1;
+  optional RoboEntityType type = 1;
   optional Coordinate location = 2;
   optional int32 id = 3;
 }
 
 message EntityResponse {
-  repeated Entity entities = 1;
+  repeated RoboEntity entities = 1;
 }
 
 message ErrorMessage {
