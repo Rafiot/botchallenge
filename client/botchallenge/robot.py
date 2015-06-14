@@ -204,14 +204,20 @@ class Robot(object):
         request.action_request.attack_location.absolute_location.z = location.z_coord
         return self._action(request).success
 
-    def get_entities(self):
+    def get_entities(self, filter_id=None, filter_types=None):
         """Launches a fireball at a location."""
         request = self._new_action()
         request.read_request.find_entities = True
         # request.read_request.find_entities_examples
         # return self._action(request) #.success
         ent_resp = self._action(request).entity_response
-        return [RoboEntity(ent.type, Location.from_proto(ent.location), ent.id) for ent in ent_resp.entities]
+        entities_return = []
+        for ent in ent_resp.entities:
+            if ent.id in RoboEntityType.value_map:
+                if filter_id is None or filter_id == ent.id:
+                    if filter_types is None or RoboEntityType.value_map[ent.type] in filter_types:
+                        entities_return.append(RoboEntity(RoboEntityType.value_map[ent.type], Location.from_proto(ent.location), ent.id))
+        return entities_return
 
 
 class RoboEntity:
@@ -318,6 +324,25 @@ class Dir:
             return False
         return self.value == other.value
 
+
+class RoboEntityType:
+    """A RoboEntityType enum. """
+
+    def __init__(self, name, value):
+        self.value = value
+        self.name = name
+
+    def __repr__(self):
+        return "{} ({})".format(self.name, self.value)
+
+    def __str__(self):
+        return self.name
+
+    def __eq__(self, other):
+        if not other:
+            return False
+        return self.value == other.value
+
 def setup_dir():
     """Initalize the Dir enum with proto values."""
     value_map = {}
@@ -328,5 +353,16 @@ def setup_dir():
             value_map[value] = dir_obj
     Dir.value_map = value_map
 
+def setup_roboEntityType():
+    """Initalize the RoboEntityType enum with proto values."""
+    value_map = {}
+    for attr, value in robotapi_pb2.RoboEntity.__dict__.items():
+        if attr.isupper() and type(value) == int:
+            roboenttype_obj = RoboEntityType(attr, value)
+            setattr(RoboEntityType, attr, roboenttype_obj)
+            value_map[value] = roboenttype_obj
+    RoboEntityType.value_map = value_map
+
 setup_dir()
+setup_roboEntityType()
 
