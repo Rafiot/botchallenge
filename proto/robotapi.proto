@@ -110,10 +110,12 @@ message RobotResponse {
   optional EntityResponse entity_response = 8;
 }
 
-message RoboEntity {
-  enum RoboEntityType {
+message RoboEntityType {
+  optional RoboEntityTypeEnum type = 1 [default = CHICKEN];
+
+  enum RoboEntityTypeEnum {
     CHICKEN = 0;
-    COW = 1;
+    COW = 1111;
     HORSE = 2;
     OCELOT = 3;
     PIG = 4;
@@ -137,6 +139,9 @@ message RoboEntity {
     ZOMBIE = 22;
     UNRECOGNIZED = 999;
   }
+}
+
+message RoboEntity {
  
   optional RoboEntityType type = 1;
   optional Coordinate location = 2;

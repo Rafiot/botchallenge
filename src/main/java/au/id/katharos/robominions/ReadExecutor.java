@@ -24,7 +24,7 @@ import au.id.katharos.robominions.api.RobotApi.RobotReadRequest.BotEntity;
 import au.id.katharos.robominions.api.RobotApi.RobotResponse;
 import au.id.katharos.robominions.api.RobotApi.WorldLocation;
 import au.id.katharos.robominions.api.RobotApi.RoboEntity;
-import au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType;
+import au.id.katharos.robominions.api.RobotApi.RoboEntityType;
 import au.id.katharos.robominions.api.RobotApi.EntityResponse;
 
 /**

@@ -212,11 +212,12 @@ class Robot(object):
         # return self._action(request) #.success
         ent_resp = self._action(request).entity_response
         entities_return = []
+        print(ent_resp)
         for ent in ent_resp.entities:
-            if ent.id in RoboEntityType.value_map:
+            if ent.type.type in RoboEntityType.value_map:
                 if filter_id is None or filter_id == ent.id:
-                    if filter_types is None or RoboEntityType.value_map[ent.type] in filter_types:
-                        entities_return.append(RoboEntity(RoboEntityType.value_map[ent.type], Location.from_proto(ent.location), ent.id))
+                    if filter_types is None or RoboEntityType.value_map[ent.type.type] in filter_types:
+                        entities_return.append(RoboEntity(RoboEntityType.value_map[ent.type.type], Location.from_proto(ent.location), ent.id))
         return entities_return
 
 
@@ -356,7 +357,7 @@ def setup_dir():
 def setup_roboEntityType():
     """Initalize the RoboEntityType enum with proto values."""
     value_map = {}
-    for attr, value in robotapi_pb2.RoboEntity.__dict__.items():
+    for attr, value in robotapi_pb2.RoboEntityType.__dict__.items():
         if attr.isupper() and type(value) == int:
             roboenttype_obj = RoboEntityType(attr, value)
             setattr(RoboEntityType, attr, roboenttype_obj)

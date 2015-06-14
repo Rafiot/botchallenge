@@ -10,7 +10,8 @@ import org.bukkit.entity.EntityType;
 import au.id.katharos.robominions.api.Materials;
 import au.id.katharos.robominions.api.Materials.Material.Type;
 import au.id.katharos.robominions.api.RobotApi.Coordinate;
-import au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType;
+import au.id.katharos.robominions.api.RobotApi.RoboEntityType;
+import au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum;
 
 import com.google.common.collect.Maps;
 
@@ -19,32 +20,32 @@ import com.google.common.collect.Maps;
  */
 public class Util {
 
-	public static final HashMap<EntityType, RoboEntityType> entityTypeMap = Maps.newHashMap();
+	public static final HashMap<EntityType, RoboEntityTypeEnum> entityTypeMap = Maps.newHashMap();
 	
 	static {
-		entityTypeMap.put(EntityType.CHICKEN, RoboEntityType.CHICKEN);
-		entityTypeMap.put(EntityType.COW, RoboEntityType.COW);
-		entityTypeMap.put(EntityType.HORSE, RoboEntityType.HORSE);
-		entityTypeMap.put(EntityType.OCELOT, RoboEntityType.OCELOT);
-		entityTypeMap.put(EntityType.PIG, RoboEntityType.PIG);
-		entityTypeMap.put(EntityType.RABBIT, RoboEntityType.RABBIT);
-		entityTypeMap.put(EntityType.SHEEP, RoboEntityType.SHEEP);
-		entityTypeMap.put(EntityType.WOLF, RoboEntityType.WOLF);
-		entityTypeMap.put(EntityType.VILLAGER, RoboEntityType.VILLAGER);
-		entityTypeMap.put(EntityType.IRON_GOLEM, RoboEntityType.IRON_GOLEM);
-		entityTypeMap.put(EntityType.SNOWMAN, RoboEntityType.SNOWMAN);
-		entityTypeMap.put(EntityType.BLAZE, RoboEntityType.BLAZE);
-		entityTypeMap.put(EntityType.CREEPER, RoboEntityType.CREEPER);
-		entityTypeMap.put(EntityType.ENDERMAN, RoboEntityType.ENDERMAN);
-		entityTypeMap.put(EntityType.ENDERMITE, RoboEntityType.ENDERMITE);
-		entityTypeMap.put(EntityType.GIANT, RoboEntityType.GIANT);
-		entityTypeMap.put(EntityType.GUARDIAN, RoboEntityType.GUARDIAN);
-		entityTypeMap.put(EntityType.SILVERFISH, RoboEntityType.SILVERFISH);
-		entityTypeMap.put(EntityType.SKELETON, RoboEntityType.SKELETON);
-		entityTypeMap.put(EntityType.SPIDER, RoboEntityType.SPIDER);
-		entityTypeMap.put(EntityType.WITCH, RoboEntityType.WITCH);
-		entityTypeMap.put(EntityType.WITHER, RoboEntityType.WITHER);
-		entityTypeMap.put(EntityType.ZOMBIE, RoboEntityType.ZOMBIE);	
+		entityTypeMap.put(EntityType.CHICKEN, RoboEntityTypeEnum.CHICKEN);
+		entityTypeMap.put(EntityType.COW, RoboEntityTypeEnum.COW);
+		entityTypeMap.put(EntityType.HORSE, RoboEntityTypeEnum.HORSE);
+		entityTypeMap.put(EntityType.OCELOT, RoboEntityTypeEnum.OCELOT);
+		entityTypeMap.put(EntityType.PIG, RoboEntityTypeEnum.PIG);
+		entityTypeMap.put(EntityType.RABBIT, RoboEntityTypeEnum.RABBIT);
+		entityTypeMap.put(EntityType.SHEEP, RoboEntityTypeEnum.SHEEP);
+		entityTypeMap.put(EntityType.WOLF, RoboEntityTypeEnum.WOLF);
+		entityTypeMap.put(EntityType.VILLAGER, RoboEntityTypeEnum.VILLAGER);
+		entityTypeMap.put(EntityType.IRON_GOLEM, RoboEntityTypeEnum.IRON_GOLEM);
+		entityTypeMap.put(EntityType.SNOWMAN, RoboEntityTypeEnum.SNOWMAN);
+		entityTypeMap.put(EntityType.BLAZE, RoboEntityTypeEnum.BLAZE);
+		entityTypeMap.put(EntityType.CREEPER, RoboEntityTypeEnum.CREEPER);
+		entityTypeMap.put(EntityType.ENDERMAN, RoboEntityTypeEnum.ENDERMAN);
+		entityTypeMap.put(EntityType.ENDERMITE, RoboEntityTypeEnum.ENDERMITE);
+		entityTypeMap.put(EntityType.GIANT, RoboEntityTypeEnum.GIANT);
+		entityTypeMap.put(EntityType.GUARDIAN, RoboEntityTypeEnum.GUARDIAN);
+		entityTypeMap.put(EntityType.SILVERFISH, RoboEntityTypeEnum.SILVERFISH);
+		entityTypeMap.put(EntityType.SKELETON, RoboEntityTypeEnum.SKELETON);
+		entityTypeMap.put(EntityType.SPIDER, RoboEntityTypeEnum.SPIDER);
+		entityTypeMap.put(EntityType.WITCH, RoboEntityTypeEnum.WITCH);
+		entityTypeMap.put(EntityType.WITHER, RoboEntityTypeEnum.WITHER);
+		entityTypeMap.put(EntityType.ZOMBIE, RoboEntityTypeEnum.ZOMBIE);	
 	}
 
 	public static Location locationFromCoords(World world, Coordinate coords) {
@@ -68,11 +69,13 @@ public class Util {
 	}
 
 	public static RoboEntityType roboEntityTypeFromEntityType(EntityType type) {
+		RoboEntityTypeEnum roboEntTypeEnum;
 		if (entityTypeMap.containsKey(type)) {
-			return entityTypeMap.get(type);
+			roboEntTypeEnum = entityTypeMap.get(type);
 		} else {
-			return RoboEntityType.UNRECOGNIZED;
+			roboEntTypeEnum = RoboEntityTypeEnum.UNRECOGNIZED;
 		}
+		return RoboEntityType.newBuilder().setType(roboEntTypeEnum).build();
 	}
 	
 	public static Materials.Material toProtoMaterial(Material material) {

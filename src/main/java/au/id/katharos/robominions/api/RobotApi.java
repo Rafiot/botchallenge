@@ -9220,61 +9220,39 @@ public final class RobotApi {
     // @@protoc_insertion_point(class_scope:robominions.RobotResponse)
   }
 
-  public interface RoboEntityOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:robominions.RoboEntity)
+  public interface RoboEntityTypeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:robominions.RoboEntityType)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .robominions.RoboEntity.RoboEntityType type = 1;</code>
+     * <code>optional .robominions.RoboEntityType.RoboEntityTypeEnum type = 1 [default = CHICKEN];</code>
      */
     boolean hasType();
     /**
-     * <code>optional .robominions.RoboEntity.RoboEntityType type = 1;</code>
+     * <code>optional .robominions.RoboEntityType.RoboEntityTypeEnum type = 1 [default = CHICKEN];</code>
      */
-    au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType getType();
-
-    /**
-     * <code>optional .robominions.Coordinate location = 2;</code>
-     */
-    boolean hasLocation();
-    /**
-     * <code>optional .robominions.Coordinate location = 2;</code>
-     */
-    au.id.katharos.robominions.api.RobotApi.Coordinate getLocation();
-    /**
-     * <code>optional .robominions.Coordinate location = 2;</code>
-     */
-    au.id.katharos.robominions.api.RobotApi.CoordinateOrBuilder getLocationOrBuilder();
-
-    /**
-     * <code>optional int32 id = 3;</code>
-     */
-    boolean hasId();
-    /**
-     * <code>optional int32 id = 3;</code>
-     */
-    int getId();
+    au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum getType();
   }
   /**
-   * Protobuf type {@code robominions.RoboEntity}
+   * Protobuf type {@code robominions.RoboEntityType}
    */
-  public static final class RoboEntity extends
+  public static final class RoboEntityType extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:robominions.RoboEntity)
-      RoboEntityOrBuilder {
-    // Use RoboEntity.newBuilder() to construct.
-    private RoboEntity(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:robominions.RoboEntityType)
+      RoboEntityTypeOrBuilder {
+    // Use RoboEntityType.newBuilder() to construct.
+    private RoboEntityType(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private RoboEntity(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private RoboEntityType(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final RoboEntity defaultInstance;
-    public static RoboEntity getDefaultInstance() {
+    private static final RoboEntityType defaultInstance;
+    public static RoboEntityType getDefaultInstance() {
       return defaultInstance;
     }
 
-    public RoboEntity getDefaultInstanceForType() {
+    public RoboEntityType getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -9284,7 +9262,7 @@ public final class RobotApi {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private RoboEntity(
+    private RoboEntityType(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9309,31 +9287,13 @@ public final class RobotApi {
             }
             case 8: {
               int rawValue = input.readEnum();
-              au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType value = au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType.valueOf(rawValue);
+              au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum value = au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
                 bitField0_ |= 0x00000001;
                 type_ = value;
               }
-              break;
-            }
-            case 18: {
-              au.id.katharos.robominions.api.RobotApi.Coordinate.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = location_.toBuilder();
-              }
-              location_ = input.readMessage(au.id.katharos.robominions.api.RobotApi.Coordinate.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(location_);
-                location_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              id_ = input.readInt32();
               break;
             }
           }
@@ -9350,44 +9310,44 @@ public final class RobotApi {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return au.id.katharos.robominions.api.RobotApi.internal_static_robominions_RoboEntity_descriptor;
+      return au.id.katharos.robominions.api.RobotApi.internal_static_robominions_RoboEntityType_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return au.id.katharos.robominions.api.RobotApi.internal_static_robominions_RoboEntity_fieldAccessorTable
+      return au.id.katharos.robominions.api.RobotApi.internal_static_robominions_RoboEntityType_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              au.id.katharos.robominions.api.RobotApi.RoboEntity.class, au.id.katharos.robominions.api.RobotApi.RoboEntity.Builder.class);
+              au.id.katharos.robominions.api.RobotApi.RoboEntityType.class, au.id.katharos.robominions.api.RobotApi.RoboEntityType.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<RoboEntity> PARSER =
-        new com.google.protobuf.AbstractParser<RoboEntity>() {
-      public RoboEntity parsePartialFrom(
+    public static com.google.protobuf.Parser<RoboEntityType> PARSER =
+        new com.google.protobuf.AbstractParser<RoboEntityType>() {
+      public RoboEntityType parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RoboEntity(input, extensionRegistry);
+        return new RoboEntityType(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<RoboEntity> getParserForType() {
+    public com.google.protobuf.Parser<RoboEntityType> getParserForType() {
       return PARSER;
     }
 
     /**
-     * Protobuf enum {@code robominions.RoboEntity.RoboEntityType}
+     * Protobuf enum {@code robominions.RoboEntityType.RoboEntityTypeEnum}
      */
-    public enum RoboEntityType
+    public enum RoboEntityTypeEnum
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
        * <code>CHICKEN = 0;</code>
        */
       CHICKEN(0, 0),
       /**
-       * <code>COW = 1;</code>
+       * <code>COW = 1111;</code>
        */
-      COW(1, 1),
+      COW(1, 1111),
       /**
        * <code>HORSE = 2;</code>
        */
@@ -9483,9 +9443,9 @@ public final class RobotApi {
        */
       public static final int CHICKEN_VALUE = 0;
       /**
-       * <code>COW = 1;</code>
+       * <code>COW = 1111;</code>
        */
-      public static final int COW_VALUE = 1;
+      public static final int COW_VALUE = 1111;
       /**
        * <code>HORSE = 2;</code>
        */
@@ -9578,10 +9538,10 @@ public final class RobotApi {
 
       public final int getNumber() { return value; }
 
-      public static RoboEntityType valueOf(int value) {
+      public static RoboEntityTypeEnum valueOf(int value) {
         switch (value) {
           case 0: return CHICKEN;
-          case 1: return COW;
+          case 1111: return COW;
           case 2: return HORSE;
           case 3: return OCELOT;
           case 4: return PIG;
@@ -9608,15 +9568,15 @@ public final class RobotApi {
         }
       }
 
-      public static com.google.protobuf.Internal.EnumLiteMap<RoboEntityType>
+      public static com.google.protobuf.Internal.EnumLiteMap<RoboEntityTypeEnum>
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<RoboEntityType>
+      private static com.google.protobuf.Internal.EnumLiteMap<RoboEntityTypeEnum>
           internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<RoboEntityType>() {
-              public RoboEntityType findValueByNumber(int number) {
-                return RoboEntityType.valueOf(number);
+            new com.google.protobuf.Internal.EnumLiteMap<RoboEntityTypeEnum>() {
+              public RoboEntityTypeEnum findValueByNumber(int number) {
+                return RoboEntityTypeEnum.valueOf(number);
               }
             };
 
@@ -9630,12 +9590,12 @@ public final class RobotApi {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return au.id.katharos.robominions.api.RobotApi.RoboEntity.getDescriptor().getEnumTypes().get(0);
+        return au.id.katharos.robominions.api.RobotApi.RoboEntityType.getDescriptor().getEnumTypes().get(0);
       }
 
-      private static final RoboEntityType[] VALUES = values();
+      private static final RoboEntityTypeEnum[] VALUES = values();
 
-      public static RoboEntityType valueOf(
+      public static RoboEntityTypeEnum valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
@@ -9647,27 +9607,485 @@ public final class RobotApi {
       private final int index;
       private final int value;
 
-      private RoboEntityType(int index, int value) {
+      private RoboEntityTypeEnum(int index, int value) {
         this.index = index;
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:robominions.RoboEntity.RoboEntityType)
+      // @@protoc_insertion_point(enum_scope:robominions.RoboEntityType.RoboEntityTypeEnum)
     }
 
     private int bitField0_;
     public static final int TYPE_FIELD_NUMBER = 1;
-    private au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType type_;
+    private au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum type_;
     /**
-     * <code>optional .robominions.RoboEntity.RoboEntityType type = 1;</code>
+     * <code>optional .robominions.RoboEntityType.RoboEntityTypeEnum type = 1 [default = CHICKEN];</code>
      */
     public boolean hasType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional .robominions.RoboEntity.RoboEntityType type = 1;</code>
+     * <code>optional .robominions.RoboEntityType.RoboEntityTypeEnum type = 1 [default = CHICKEN];</code>
      */
-    public au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType getType() {
+    public au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum getType() {
+      return type_;
+    }
+
+    private void initFields() {
+      type_ = au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum.CHICKEN;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, type_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static au.id.katharos.robominions.api.RobotApi.RoboEntityType parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(au.id.katharos.robominions.api.RobotApi.RoboEntityType prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code robominions.RoboEntityType}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:robominions.RoboEntityType)
+        au.id.katharos.robominions.api.RobotApi.RoboEntityTypeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return au.id.katharos.robominions.api.RobotApi.internal_static_robominions_RoboEntityType_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return au.id.katharos.robominions.api.RobotApi.internal_static_robominions_RoboEntityType_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                au.id.katharos.robominions.api.RobotApi.RoboEntityType.class, au.id.katharos.robominions.api.RobotApi.RoboEntityType.Builder.class);
+      }
+
+      // Construct using au.id.katharos.robominions.api.RobotApi.RoboEntityType.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        type_ = au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum.CHICKEN;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return au.id.katharos.robominions.api.RobotApi.internal_static_robominions_RoboEntityType_descriptor;
+      }
+
+      public au.id.katharos.robominions.api.RobotApi.RoboEntityType getDefaultInstanceForType() {
+        return au.id.katharos.robominions.api.RobotApi.RoboEntityType.getDefaultInstance();
+      }
+
+      public au.id.katharos.robominions.api.RobotApi.RoboEntityType build() {
+        au.id.katharos.robominions.api.RobotApi.RoboEntityType result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public au.id.katharos.robominions.api.RobotApi.RoboEntityType buildPartial() {
+        au.id.katharos.robominions.api.RobotApi.RoboEntityType result = new au.id.katharos.robominions.api.RobotApi.RoboEntityType(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof au.id.katharos.robominions.api.RobotApi.RoboEntityType) {
+          return mergeFrom((au.id.katharos.robominions.api.RobotApi.RoboEntityType)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(au.id.katharos.robominions.api.RobotApi.RoboEntityType other) {
+        if (other == au.id.katharos.robominions.api.RobotApi.RoboEntityType.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        au.id.katharos.robominions.api.RobotApi.RoboEntityType parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (au.id.katharos.robominions.api.RobotApi.RoboEntityType) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum type_ = au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum.CHICKEN;
+      /**
+       * <code>optional .robominions.RoboEntityType.RoboEntityTypeEnum type = 1 [default = CHICKEN];</code>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .robominions.RoboEntityType.RoboEntityTypeEnum type = 1 [default = CHICKEN];</code>
+       */
+      public au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum getType() {
+        return type_;
+      }
+      /**
+       * <code>optional .robominions.RoboEntityType.RoboEntityTypeEnum type = 1 [default = CHICKEN];</code>
+       */
+      public Builder setType(au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .robominions.RoboEntityType.RoboEntityTypeEnum type = 1 [default = CHICKEN];</code>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = au.id.katharos.robominions.api.RobotApi.RoboEntityType.RoboEntityTypeEnum.CHICKEN;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:robominions.RoboEntityType)
+    }
+
+    static {
+      defaultInstance = new RoboEntityType(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:robominions.RoboEntityType)
+  }
+
+  public interface RoboEntityOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:robominions.RoboEntity)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .robominions.RoboEntityType type = 1;</code>
+     */
+    boolean hasType();
+    /**
+     * <code>optional .robominions.RoboEntityType type = 1;</code>
+     */
+    au.id.katharos.robominions.api.RobotApi.RoboEntityType getType();
+    /**
+     * <code>optional .robominions.RoboEntityType type = 1;</code>
+     */
+    au.id.katharos.robominions.api.RobotApi.RoboEntityTypeOrBuilder getTypeOrBuilder();
+
+    /**
+     * <code>optional .robominions.Coordinate location = 2;</code>
+     */
+    boolean hasLocation();
+    /**
+     * <code>optional .robominions.Coordinate location = 2;</code>
+     */
+    au.id.katharos.robominions.api.RobotApi.Coordinate getLocation();
+    /**
+     * <code>optional .robominions.Coordinate location = 2;</code>
+     */
+    au.id.katharos.robominions.api.RobotApi.CoordinateOrBuilder getLocationOrBuilder();
+
+    /**
+     * <code>optional int32 id = 3;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional int32 id = 3;</code>
+     */
+    int getId();
+  }
+  /**
+   * Protobuf type {@code robominions.RoboEntity}
+   */
+  public static final class RoboEntity extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:robominions.RoboEntity)
+      RoboEntityOrBuilder {
+    // Use RoboEntity.newBuilder() to construct.
+    private RoboEntity(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RoboEntity(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RoboEntity defaultInstance;
+    public static RoboEntity getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RoboEntity getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RoboEntity(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              au.id.katharos.robominions.api.RobotApi.RoboEntityType.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = type_.toBuilder();
+              }
+              type_ = input.readMessage(au.id.katharos.robominions.api.RobotApi.RoboEntityType.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(type_);
+                type_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              au.id.katharos.robominions.api.RobotApi.Coordinate.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = location_.toBuilder();
+              }
+              location_ = input.readMessage(au.id.katharos.robominions.api.RobotApi.Coordinate.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(location_);
+                location_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              id_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return au.id.katharos.robominions.api.RobotApi.internal_static_robominions_RoboEntity_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return au.id.katharos.robominions.api.RobotApi.internal_static_robominions_RoboEntity_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              au.id.katharos.robominions.api.RobotApi.RoboEntity.class, au.id.katharos.robominions.api.RobotApi.RoboEntity.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RoboEntity> PARSER =
+        new com.google.protobuf.AbstractParser<RoboEntity>() {
+      public RoboEntity parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RoboEntity(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RoboEntity> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private au.id.katharos.robominions.api.RobotApi.RoboEntityType type_;
+    /**
+     * <code>optional .robominions.RoboEntityType type = 1;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .robominions.RoboEntityType type = 1;</code>
+     */
+    public au.id.katharos.robominions.api.RobotApi.RoboEntityType getType() {
+      return type_;
+    }
+    /**
+     * <code>optional .robominions.RoboEntityType type = 1;</code>
+     */
+    public au.id.katharos.robominions.api.RobotApi.RoboEntityTypeOrBuilder getTypeOrBuilder() {
       return type_;
     }
 
@@ -9708,7 +10126,7 @@ public final class RobotApi {
     }
 
     private void initFields() {
-      type_ = au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType.CHICKEN;
+      type_ = au.id.katharos.robominions.api.RobotApi.RoboEntityType.getDefaultInstance();
       location_ = au.id.katharos.robominions.api.RobotApi.Coordinate.getDefaultInstance();
       id_ = 0;
     }
@@ -9732,7 +10150,7 @@ public final class RobotApi {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, type_.getNumber());
+        output.writeMessage(1, type_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, location_);
@@ -9751,7 +10169,7 @@ public final class RobotApi {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_.getNumber());
+          .computeMessageSize(1, type_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -9870,6 +10288,7 @@ public final class RobotApi {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTypeFieldBuilder();
           getLocationFieldBuilder();
         }
       }
@@ -9879,7 +10298,11 @@ public final class RobotApi {
 
       public Builder clear() {
         super.clear();
-        type_ = au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType.CHICKEN;
+        if (typeBuilder_ == null) {
+          type_ = au.id.katharos.robominions.api.RobotApi.RoboEntityType.getDefaultInstance();
+        } else {
+          typeBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
         if (locationBuilder_ == null) {
           location_ = au.id.katharos.robominions.api.RobotApi.Coordinate.getDefaultInstance();
@@ -9920,7 +10343,11 @@ public final class RobotApi {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.type_ = type_;
+        if (typeBuilder_ == null) {
+          result.type_ = type_;
+        } else {
+          result.type_ = typeBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -9950,7 +10377,7 @@ public final class RobotApi {
       public Builder mergeFrom(au.id.katharos.robominions.api.RobotApi.RoboEntity other) {
         if (other == au.id.katharos.robominions.api.RobotApi.RoboEntity.getDefaultInstance()) return this;
         if (other.hasType()) {
-          setType(other.getType());
+          mergeType(other.getType());
         }
         if (other.hasLocation()) {
           mergeLocation(other.getLocation());
@@ -9991,39 +10418,120 @@ public final class RobotApi {
       }
       private int bitField0_;
 
-      private au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType type_ = au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType.CHICKEN;
+      private au.id.katharos.robominions.api.RobotApi.RoboEntityType type_ = au.id.katharos.robominions.api.RobotApi.RoboEntityType.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          au.id.katharos.robominions.api.RobotApi.RoboEntityType, au.id.katharos.robominions.api.RobotApi.RoboEntityType.Builder, au.id.katharos.robominions.api.RobotApi.RoboEntityTypeOrBuilder> typeBuilder_;
       /**
-       * <code>optional .robominions.RoboEntity.RoboEntityType type = 1;</code>
+       * <code>optional .robominions.RoboEntityType type = 1;</code>
        */
       public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional .robominions.RoboEntity.RoboEntityType type = 1;</code>
+       * <code>optional .robominions.RoboEntityType type = 1;</code>
        */
-      public au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType getType() {
-        return type_;
+      public au.id.katharos.robominions.api.RobotApi.RoboEntityType getType() {
+        if (typeBuilder_ == null) {
+          return type_;
+        } else {
+          return typeBuilder_.getMessage();
+        }
       }
       /**
-       * <code>optional .robominions.RoboEntity.RoboEntityType type = 1;</code>
+       * <code>optional .robominions.RoboEntityType type = 1;</code>
        */
-      public Builder setType(au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType value) {
-        if (value == null) {
-          throw new NullPointerException();
+      public Builder setType(au.id.katharos.robominions.api.RobotApi.RoboEntityType value) {
+        if (typeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          type_ = value;
+          onChanged();
+        } else {
+          typeBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
-        type_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>optional .robominions.RoboEntity.RoboEntityType type = 1;</code>
+       * <code>optional .robominions.RoboEntityType type = 1;</code>
+       */
+      public Builder setType(
+          au.id.katharos.robominions.api.RobotApi.RoboEntityType.Builder builderForValue) {
+        if (typeBuilder_ == null) {
+          type_ = builderForValue.build();
+          onChanged();
+        } else {
+          typeBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .robominions.RoboEntityType type = 1;</code>
+       */
+      public Builder mergeType(au.id.katharos.robominions.api.RobotApi.RoboEntityType value) {
+        if (typeBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              type_ != au.id.katharos.robominions.api.RobotApi.RoboEntityType.getDefaultInstance()) {
+            type_ =
+              au.id.katharos.robominions.api.RobotApi.RoboEntityType.newBuilder(type_).mergeFrom(value).buildPartial();
+          } else {
+            type_ = value;
+          }
+          onChanged();
+        } else {
+          typeBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .robominions.RoboEntityType type = 1;</code>
        */
       public Builder clearType() {
+        if (typeBuilder_ == null) {
+          type_ = au.id.katharos.robominions.api.RobotApi.RoboEntityType.getDefaultInstance();
+          onChanged();
+        } else {
+          typeBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType.CHICKEN;
-        onChanged();
         return this;
+      }
+      /**
+       * <code>optional .robominions.RoboEntityType type = 1;</code>
+       */
+      public au.id.katharos.robominions.api.RobotApi.RoboEntityType.Builder getTypeBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTypeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .robominions.RoboEntityType type = 1;</code>
+       */
+      public au.id.katharos.robominions.api.RobotApi.RoboEntityTypeOrBuilder getTypeOrBuilder() {
+        if (typeBuilder_ != null) {
+          return typeBuilder_.getMessageOrBuilder();
+        } else {
+          return type_;
+        }
+      }
+      /**
+       * <code>optional .robominions.RoboEntityType type = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          au.id.katharos.robominions.api.RobotApi.RoboEntityType, au.id.katharos.robominions.api.RobotApi.RoboEntityType.Builder, au.id.katharos.robominions.api.RobotApi.RoboEntityTypeOrBuilder> 
+          getTypeFieldBuilder() {
+        if (typeBuilder_ == null) {
+          typeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              au.id.katharos.robominions.api.RobotApi.RoboEntityType, au.id.katharos.robominions.api.RobotApi.RoboEntityType.Builder, au.id.katharos.robominions.api.RobotApi.RoboEntityTypeOrBuilder>(
+                  getType(),
+                  getParentForChildren(),
+                  isClean());
+          type_ = null;
+        }
+        return typeBuilder_;
       }
 
       private au.id.katharos.robominions.api.RobotApi.Coordinate location_ = au.id.katharos.robominions.api.RobotApi.Coordinate.getDefaultInstance();
@@ -11818,6 +12326,11 @@ public final class RobotApi {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_robominions_RobotResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_robominions_RoboEntityType_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_robominions_RoboEntityType_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_robominions_RoboEntity_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -11890,32 +12403,34 @@ public final class RobotApi {
       "\022:\n\022inventory_response\030\006 \001(\0132\036.robominio" +
       "ns.InventoryResponse\022\030\n\020boolean_response" +
       "\030\007 \001(\010\0224\n\017entity_response\030\010 \001(\0132\033.robomi" +
-      "nions.EntityResponse\"\274\003\n\nRoboEntity\0224\n\004t",
-      "ype\030\001 \001(\0162&.robominions.RoboEntity.RoboE" +
-      "ntityType\022)\n\010location\030\002 \001(\0132\027.robominion" +
-      "s.Coordinate\022\n\n\002id\030\003 \001(\005\"\300\002\n\016RoboEntityT" +
-      "ype\022\013\n\007CHICKEN\020\000\022\007\n\003COW\020\001\022\t\n\005HORSE\020\002\022\n\n\006" +
-      "OCELOT\020\003\022\007\n\003PIG\020\004\022\n\n\006RABBIT\020\005\022\t\n\005SHEEP\020\006" +
-      "\022\010\n\004WOLF\020\007\022\014\n\010VILLAGER\020\010\022\016\n\nIRON_GOLEM\020\t" +
-      "\022\013\n\007SNOWMAN\020\n\022\t\n\005BLAZE\020\013\022\013\n\007CREEPER\020\014\022\014\n" +
-      "\010ENDERMAN\020\r\022\r\n\tENDERMITE\020\016\022\t\n\005GIANT\020\017\022\014\n" +
-      "\010GUARDIAN\020\020\022\016\n\nSILVERFISH\020\021\022\014\n\010SKELETON\020" +
-      "\022\022\n\n\006SPIDER\020\023\022\t\n\005WITCH\020\024\022\n\n\006WITHER\020\025\022\n\n\006",
-      "ZOMBIE\020\026\022\021\n\014UNRECOGNIZED\020\347\007\";\n\016EntityRes" +
-      "ponse\022)\n\010entities\030\001 \003(\0132\027.robominions.Ro" +
-      "boEntity\"\302\003\n\014ErrorMessage\0220\n\006reason\030\001 \001(" +
-      "\0162 .robominions.ErrorMessage.Reason\0220\n\006a" +
-      "ction\030\002 \001(\0162 .robominions.ErrorMessage.A" +
-      "ction\022\017\n\007message\030\003 \001(\t\"\376\001\n\006Reason\022\013\n\007UNK" +
-      "NOWN\020\000\022\020\n\014SERVER_ERROR\020\001\022\026\n\022UNREADABLE_R" +
-      "EQUEST\020\002\022\023\n\017INVALID_REQUEST\020\003\022\023\n\017BLOCK_C" +
-      "OLLISION\020\004\022\024\n\020OUTSIDE_OF_WORLD\020\005\022\030\n\024ROBO" +
-      "T_DOES_NOT_EXIST\020\006\022\032\n\026BLOCK_IS_NOT_REACH",
-      "ABLE\020\007\022\030\n\024BLOCK_IS_NOT_VISIBLE\020\010\022\023\n\017NOT_" +
-      "IMPLEMENTED\020\t\022\030\n\024OWNER_DOES_NOT_EXIST\020\n\"" +
-      "<\n\006Action\022\017\n\013FAIL_ACTION\020\000\022\020\n\014RETRY_ACTI" +
-      "ON\020\001\022\017\n\013EXIT_CLIENT\020\002B*\n\036au.id.katharos." +
-      "robominions.apiB\010RobotApi"
+      "nions.EntityResponse\"\237\003\n\016RoboEntityType\022",
+      "E\n\004type\030\001 \001(\0162..robominions.RoboEntityTy" +
+      "pe.RoboEntityTypeEnum:\007CHICKEN\"\305\002\n\022RoboE" +
+      "ntityTypeEnum\022\013\n\007CHICKEN\020\000\022\010\n\003COW\020\327\010\022\t\n\005" +
+      "HORSE\020\002\022\n\n\006OCELOT\020\003\022\007\n\003PIG\020\004\022\n\n\006RABBIT\020\005" +
+      "\022\t\n\005SHEEP\020\006\022\010\n\004WOLF\020\007\022\014\n\010VILLAGER\020\010\022\016\n\nI" +
+      "RON_GOLEM\020\t\022\013\n\007SNOWMAN\020\n\022\t\n\005BLAZE\020\013\022\013\n\007C" +
+      "REEPER\020\014\022\014\n\010ENDERMAN\020\r\022\r\n\tENDERMITE\020\016\022\t\n" +
+      "\005GIANT\020\017\022\014\n\010GUARDIAN\020\020\022\016\n\nSILVERFISH\020\021\022\014" +
+      "\n\010SKELETON\020\022\022\n\n\006SPIDER\020\023\022\t\n\005WITCH\020\024\022\n\n\006W" +
+      "ITHER\020\025\022\n\n\006ZOMBIE\020\026\022\021\n\014UNRECOGNIZED\020\347\007\"n",
+      "\n\nRoboEntity\022)\n\004type\030\001 \001(\0132\033.robominions" +
+      ".RoboEntityType\022)\n\010location\030\002 \001(\0132\027.robo" +
+      "minions.Coordinate\022\n\n\002id\030\003 \001(\005\";\n\016Entity" +
+      "Response\022)\n\010entities\030\001 \003(\0132\027.robominions" +
+      ".RoboEntity\"\302\003\n\014ErrorMessage\0220\n\006reason\030\001" +
+      " \001(\0162 .robominions.ErrorMessage.Reason\0220" +
+      "\n\006action\030\002 \001(\0162 .robominions.ErrorMessag" +
+      "e.Action\022\017\n\007message\030\003 \001(\t\"\376\001\n\006Reason\022\013\n\007" +
+      "UNKNOWN\020\000\022\020\n\014SERVER_ERROR\020\001\022\026\n\022UNREADABL" +
+      "E_REQUEST\020\002\022\023\n\017INVALID_REQUEST\020\003\022\023\n\017BLOC",
+      "K_COLLISION\020\004\022\024\n\020OUTSIDE_OF_WORLD\020\005\022\030\n\024R" +
+      "OBOT_DOES_NOT_EXIST\020\006\022\032\n\026BLOCK_IS_NOT_RE" +
+      "ACHABLE\020\007\022\030\n\024BLOCK_IS_NOT_VISIBLE\020\010\022\023\n\017N" +
+      "OT_IMPLEMENTED\020\t\022\030\n\024OWNER_DOES_NOT_EXIST" +
+      "\020\n\"<\n\006Action\022\017\n\013FAIL_ACTION\020\000\022\020\n\014RETRY_A" +
+      "CTION\020\001\022\017\n\013EXIT_CLIENT\020\002B*\n\036au.id.kathar" +
+      "os.robominions.apiB\010RobotApi"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11978,20 +12493,26 @@ public final class RobotApi {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_robominions_RobotResponse_descriptor,
         new java.lang.String[] { "Key", "Success", "ErrorMessage", "LocationResponse", "MaterialResponse", "InventoryResponse", "BooleanResponse", "EntityResponse", });
-    internal_static_robominions_RoboEntity_descriptor =
+    internal_static_robominions_RoboEntityType_descriptor =
       getDescriptor().getMessageTypes().get(8);
+    internal_static_robominions_RoboEntityType_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_robominions_RoboEntityType_descriptor,
+        new java.lang.String[] { "Type", });
+    internal_static_robominions_RoboEntity_descriptor =
+      getDescriptor().getMessageTypes().get(9);
     internal_static_robominions_RoboEntity_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_robominions_RoboEntity_descriptor,
         new java.lang.String[] { "Type", "Location", "Id", });
     internal_static_robominions_EntityResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_robominions_EntityResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_robominions_EntityResponse_descriptor,
         new java.lang.String[] { "Entities", });
     internal_static_robominions_ErrorMessage_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_robominions_ErrorMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_robominions_ErrorMessage_descriptor,
