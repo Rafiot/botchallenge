@@ -204,6 +204,34 @@ class Robot(object):
         request.action_request.attack_location.absolute_location.z = location.z_coord
         return self._action(request).success
 
+    def get_entities(self):
+        """Launches a fireball at a location."""
+        request = self._new_action()
+        request.read_request.find_entities = True
+        # request.read_request.find_entities_examples
+        # return self._action(request) #.success
+        ent_resp = self._action(request).entity_response
+        return [RoboEntity(ent.type, Location.from_proto(ent.location), ent.id) for ent in ent_resp.entities]
+
+
+class RoboEntity:
+    """ A Minecraft Entity """
+
+    def __init__(self, type, location, id):
+        self.type = type
+        self.location = location
+        self.id = id
+
+    def __repr__(self):
+        return "{} ({}) at {}".format(self.id, self.type, self.location)
+
+    def __str__(self):
+        return self.id+" "+self.type+" "+self.location
+
+    def __eq__(self, other):
+        if not other:
+            return False
+        return self.id == other.id
 
 
 class Location(object):

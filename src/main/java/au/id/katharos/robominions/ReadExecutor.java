@@ -11,6 +11,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
 import au.id.katharos.robominions.api.RobotApi.Coordinate;
@@ -19,11 +20,12 @@ import au.id.katharos.robominions.api.RobotApi.ErrorMessage.Reason;
 import au.id.katharos.robominions.api.RobotApi.InventoryResponse;
 import au.id.katharos.robominions.api.RobotApi.LocationResponse;
 import au.id.katharos.robominions.api.RobotApi.RobotReadRequest;
-import au.id.katharos.robominions.api.RobotApi.RobotReadRequest.Entity;
+import au.id.katharos.robominions.api.RobotApi.RobotReadRequest.BotEntity;
 import au.id.katharos.robominions.api.RobotApi.RobotResponse;
 import au.id.katharos.robominions.api.RobotApi.WorldLocation;
 import au.id.katharos.robominions.api.RobotApi.RoboEntity;
 import au.id.katharos.robominions.api.RobotApi.RoboEntity.RoboEntityType;
+import au.id.katharos.robominions.api.RobotApi.EntityResponse;
 
 /**
  * The executor of read requests. These read requests happen asynchronously so that read-only
@@ -75,17 +77,16 @@ public class ReadExecutor {
 		return locResponse.build();
 	}
 
-	private EntityResponse buildEntityResponse(List<Entity> entities) {
+	private EntityResponse.Builder buildEntityResponse(List<Entity> entities) {
 		EntityResponse.Builder entResponse = EntityResponse.newBuilder(); 
 		for (Entity ent : entities) {
-			RoboEntity roboEntity = RoboEntity.newBuilder();
+			RoboEntity.Builder roboEntity = RoboEntity.newBuilder();
 			roboEntity.setType(Util.roboEntityTypeFromEntityType(ent.getType()));
 			roboEntity.setLocation(Util.coordsFromLocation(ent.getLocation()));
 			roboEntity.setId(ent.getEntityId());
-			roboEntity.build();
-			entResponse.addEntities(roboEntity);
+			entResponse.addEntities(roboEntity.build());
 		}
-		return entResponse.build();
+		return entResponse;
 	}
 	
 	public RobotResponse execute(String playerName, int key, RobotReadRequest readRequest) 
@@ -118,9 +119,9 @@ public class ReadExecutor {
 			response.setSuccess(true);
 		} else if (readRequest.hasLocateEntity()) {
 			Location location = null;
-			if (readRequest.getLocateEntity() == Entity.SELF) {
+			if (readRequest.getLocateEntity() == BotEntity.SELF) {
 				location = robot.getLocation();
-			} else if (readRequest.getLocateEntity() == Entity.OWNER) {
+			} else if (readRequest.getLocateEntity() == BotEntity.OWNER) {
 				Player player = robot.getPlayer();
 				if (player == null) {
 					throw new RobotRequestException(
@@ -163,13 +164,17 @@ public class ReadExecutor {
 			response.setSuccess(true);
 			response.setLocationResponse(locResponse);
 		} else if (readRequest.hasFindEntities()) {
-			List<RoboEntity> roboEntities = readRequest.getFindEntitiesExamplesList();
-			EntityResponse entityResponse;
+			//List<RoboEntity> roboEntities = readRequest.getFindEntitiesExamplesList();
+			EntityResponse.Builder entityResponseBuilder = buildEntityResponse(robot.getWorld().getEntities());
+			/*
 			if (roboEntities.size() > 0) {
-
+				// TODO
 			} else {
-				entityResponse = buildEntityResponse(world)
+				entityResponse = buildEntityResponse(robot.getWorld().getEntities());
 			}
+			*/
+			response.setEntityResponse(entityResponseBuilder);
+			response.setSuccess(true);
 		} else {
 			throw new RobotRequestException(Reason.INVALID_REQUEST, "The read request has no recognised request in it.");
 		}
