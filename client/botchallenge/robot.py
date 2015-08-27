@@ -163,6 +163,50 @@ class Robot(object):
         request.action_request.is_public_message = True
         return self._action(request).success
 
+    def get_owner_target_block(self):
+        """Returns the Location object for the location coordinates of the
+        block the robot's owner player is looking at."""
+        request = self._new_action()
+        request.read_request.locate_player_target_block = True
+        loc_proto = self._action(request).location_response.locations[0] # loc_proto is a WorldLocation
+        return Location.from_proto(loc_proto.absolute_location)
+
+    def teleport(self, location):
+        """Teleports the robot to the given location."""
+        request = self._new_action()
+        request.action_request.teleport_location.absolute_location.x = location.x_coord
+        request.action_request.teleport_location.absolute_location.y = location.y_coord
+        request.action_request.teleport_location.absolute_location.z = location.z_coord
+        return self._action(request).success
+
+    def drop_item(self, blocktype, amount):
+        """Drop a stack of blocktype next to the robot"""
+        request = self._new_action()
+        request.action_request.drop_material.type = blocktype.value
+        request.action_request.drop_amount = amount
+        return self._action(request).success
+
+    def get_block_type_at(self, location):
+        """Find the type of the block at the given location."""
+        request = self._new_action()
+        request.read_request.identify_material.absolute_location.x = location.x_coord
+        request.read_request.identify_material.absolute_location.y = location.y_coord
+        request.read_request.identify_material.absolute_location.z = location.z_coord
+        material_id = self._action(request).material_response.type
+        if material_id in BlockType.value_map:
+            return BlockType.value_map[material_id]
+        logging.warn("Unrecognized block type: %d", material_id)
+        return None
+
+    def attack(self, location):
+        """Launches a fireball at a location."""
+        request = self._new_action()
+        request.action_request.attack_location.absolute_location.x = location.x_coord
+        request.action_request.attack_location.absolute_location.y = location.y_coord
+        request.action_request.attack_location.absolute_location.z = location.z_coord
+        return self._action(request).success
+
+
 
 class Location(object):
     """A location in the Minecraft world as a set of 3D coordinates."""

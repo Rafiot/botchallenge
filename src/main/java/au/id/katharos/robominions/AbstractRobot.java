@@ -20,9 +20,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.Chest;
 import org.bukkit.util.Vector;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Fireball;
 
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 import au.id.katharos.robominions.api.RobotApi.WorldLocation.Direction;
+import au.id.katharos.robominions.api.RobotApi.WorldLocation;
+import au.id.katharos.robominions.api.RobotApi.Coordinate;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -141,9 +144,9 @@ public abstract class AbstractRobot implements InventoryHolder {
 			return false;
 		}
 		// Any block less than 10 blocks away is visible.
-		if (loc.distance(location.getBlock().getLocation()) > 10) {
-			return false;
-		}
+		// if (loc.distance(location.getBlock().getLocation()) > 10) {
+		//	 return false;
+		// }
 		return true;
 	}
 
@@ -193,7 +196,7 @@ public abstract class AbstractRobot implements InventoryHolder {
 	 */
 	public boolean mine(Direction mineDirection) {
 		Block block = getBlockFromDirection(mineDirection);
-		logger.info("Mining block: " + block + ", I'ts a: " + block.getType());
+		logger.info("Mining block: " + block + ", It's a: " + block.getType());
 		boolean success = block.breakNaturally(pickAxe);
 		
 		return success;
@@ -416,6 +419,114 @@ public abstract class AbstractRobot implements InventoryHolder {
 		String ownerName = Bukkit.getOfflinePlayer(this.playerId).getName();
 		String prefix = ChatColor.GOLD + "<" + ownerName + "'s Robot> " + ChatColor.WHITE; 
 		Bukkit.getServer().broadcastMessage(prefix + msg);
+		return true;
+	}
+
+	/**
+	 * Teleports the robot to a location.
+	 * @param world_loc The WorldLocation coordinate to teleport to
+	 * @return True if teleporting was successful. 
+	 */
+	public boolean teleport(WorldLocation world_loc) {
+		Location loc = new Location(this.world, 
+									world_loc.getAbsoluteLocation().getX(), 
+									world_loc.getAbsoluteLocation().getY(), 
+									world_loc.getAbsoluteLocation().getZ());
+		Block block = getBlockAt(loc);
+		boolean success = !block.getType().isSolid();
+		if (success) {
+			this.location = loc;
+			logger.warning("TELEPORTING to "+world_loc.getAbsoluteLocation().getX()+", "+world_loc.getAbsoluteLocation().getY()+", "+world_loc.getAbsoluteLocation().getZ());
+		} else {
+			logger.warning("ERROR TELEPORTING to "+world_loc.getAbsoluteLocation().getX()+", "+world_loc.getAbsoluteLocation().getY()+", "+world_loc.getAbsoluteLocation().getZ());
+		}
+		return success;
+	}
+
+	/**
+	 * Drops an item stack 2 blocks in from of the Robot
+	 * @param material The material to drop
+	 * @param amount the number of blocks to drop
+	 * @return True if drop location is free of blocks
+	 */
+	public boolean drop_item(Material material, int amount) {
+		Vector directionVector = directionMap.get(getAbsoluteDirection(this.facingDirection, Direction.FORWARD)).clone();
+		directionVector.multiply(3); // need to throw it 3 blocks away so the Robot doesn't grab it
+		Location loc = this.location.clone().add(directionVector);
+		Block block = getBlockAt(loc);
+		boolean success = !block.getType().isSolid();
+
+		if (success && inventory.contains(material, amount)) {
+			int amountDropped  = 0;
+			while (amountDropped < amount) {
+				int stackNumber = inventory.first(material);
+				ItemStack itemStack = inventory.getItem(stackNumber);
+				if (itemStack.getAmount() > (amount-amountDropped)) {
+					itemStack.setAmount(itemStack.getAmount() - (amount-amountDropped));
+					amountDropped = amount;
+				} else {
+					amountDropped += itemStack.getAmount();
+					inventory.clear(stackNumber);
+				}
+			}
+			this.world.dropItem(loc, new ItemStack(material, amount));
+			logger.warning("Dropping items at "+loc.toString());
+		} else {
+			logger.warning("Robot doesn't have "+amount+" of that material");
+		}
+		return success;
+	}
+
+	/**
+	 * Launches a fireball towards a target location
+	 * @param the WorldLocation of the target
+	 * @return True 
+	 */
+	public boolean attack(WorldLocation target_loc) {
+		
+		Vector offset = new Vector(0,0,0);
+		Location targetLocation = new Location(world,
+											target_loc.getAbsoluteLocation().getX()+0.5, 
+											target_loc.getAbsoluteLocation().getY()+0.99, 
+											target_loc.getAbsoluteLocation().getZ()+0.5);
+		double deltaZ = targetLocation.getZ() - location.getZ();
+		double deltaY = targetLocation.getY() - location.getY();
+		double deltaX = targetLocation.getX() - location.getX();
+
+		// Face the direction that is closest to the target direction
+		if (Math.abs(deltaX) > Math.abs(deltaZ)) {
+			if (deltaX > 0) {
+				turn(Direction.EAST);
+				offset = new Vector(1,0,0);
+			} else {
+				turn(Direction.WEST);
+				offset = new Vector(-1,0,0);
+			}
+		} else {
+			if (deltaZ > 0) {
+				turn(Direction.SOUTH);
+				offset = new Vector(0,0,1);
+			} else {
+				turn(Direction.NORTH);
+				offset = new Vector(0,0,-1);
+			}
+		}
+		// calculate new deltas with new offset
+		Location launchLocation = location.clone().add(offset).clone();
+		deltaZ = targetLocation.getZ() - launchLocation.getZ();
+		deltaY = targetLocation.getY() - launchLocation.getY();
+		deltaX = targetLocation.getX() - launchLocation.getX();
+
+		double distance = Math.sqrt(deltaZ * deltaZ + deltaX * deltaX);
+		double pitch = Math.toDegrees(Math.atan2(distance, deltaY) - Math.PI/2);
+		double yaw = Math.toDegrees(Math.atan2(deltaZ, deltaX) - Math.PI/2);
+		logger.warning("Attacking "+targetLocation.toString());
+		logger.warning("launching projectile, yaw="+yaw+", pitch="+pitch);
+
+		launchLocation.setPitch((float)pitch);
+		launchLocation.setYaw((float)yaw);
+
+		Fireball fireball = world.spawn(launchLocation, Fireball.class);
 		return true;
 	}
 }
