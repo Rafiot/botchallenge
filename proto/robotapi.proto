@@ -44,7 +44,7 @@ message WorldLocation {
 }
 
 message RobotReadRequest {
-  enum Entity {
+  enum BotEntity {
   	SELF = 0;
     OWNER = 1;
   }
@@ -55,7 +55,7 @@ message RobotReadRequest {
   // These return zero or more locations
   optional Material locate_material_nearby = 2;
   optional bool locate_nonsolid_nearby = 4;
-  optional Entity locate_entity = 3;
+  optional BotEntity locate_entity = 3;
   
   // This returns an inventory
   optional bool get_inventory = 5;
@@ -64,6 +64,11 @@ message RobotReadRequest {
   optional WorldLocation is_solid = 6;
 
   optional bool locate_player_target_block = 7;
+
+  // Returns a list of entities
+  optional bool find_entities = 8;
+  repeated RoboEntity find_entities_examples = 9;
+
 }
 
 message RobotActionRequest {
@@ -102,6 +107,49 @@ message RobotResponse {
   optional Material material_response = 5;
   optional InventoryResponse inventory_response = 6;
   optional bool boolean_response = 7;
+  optional EntityResponse entity_response = 8;
+}
+
+message RoboEntityType {
+  optional RoboEntityTypeEnum type = 1 [default = CHICKEN];
+
+  enum RoboEntityTypeEnum {
+    CHICKEN = 0;
+    COW = 1111;
+    HORSE = 2;
+    OCELOT = 3;
+    PIG = 4;
+    RABBIT = 5;
+    SHEEP = 6;
+    WOLF = 7;
+    VILLAGER = 8;
+    IRON_GOLEM = 9;
+    SNOWMAN = 10;
+    BLAZE = 11;
+    CREEPER = 12;
+    ENDERMAN = 13;
+    ENDERMITE = 14;
+    GIANT = 15;
+    GUARDIAN = 16;
+    SILVERFISH = 17;
+    SKELETON = 18;
+    SPIDER = 19;
+    WITCH = 20;
+    WITHER = 21;
+    ZOMBIE = 22;
+    UNRECOGNIZED = 999;
+  }
+}
+
+message RoboEntity {
+ 
+  optional RoboEntityType type = 1;
+  optional Coordinate location = 2;
+  optional int32 id = 3;
+}
+
+message EntityResponse {
+  repeated RoboEntity entities = 1;
 }
 
 message ErrorMessage {

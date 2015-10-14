@@ -19,7 +19,7 @@ from . import materials_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='robotapi.proto',
   package='robominions',
-  serialized_pb=_b('\n\x0erobotapi.proto\x12\x0brobominions\x1a\x0fmaterials.proto\"\x97\x01\n\x0cRobotRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\x05\x12\x33\n\x0cread_request\x18\x03 \x01(\x0b\x32\x1d.robominions.RobotReadRequest\x12\x37\n\x0e\x61\x63tion_request\x18\x04 \x01(\x0b\x32\x1f.robominions.RobotActionRequest\"-\n\nCoordinate\x12\t\n\x01x\x18\x01 \x02(\x05\x12\t\n\x01y\x18\x02 \x02(\x05\x12\t\n\x01z\x18\x03 \x02(\x05\"\xf5\x01\n\rWorldLocation\x12\x32\n\x11\x61\x62solute_location\x18\x01 \x01(\x0b\x32\x17.robominions.Coordinate\x12\x37\n\tdirection\x18\x02 \x01(\x0e\x32$.robominions.WorldLocation.Direction\"w\n\tDirection\x12\x06\n\x02UP\x10\x00\x12\x08\n\x04\x44OWN\x10\x01\x12\x08\n\x04LEFT\x10\x02\x12\t\n\x05RIGHT\x10\x03\x12\x0b\n\x07\x46ORWARD\x10\x04\x12\x0c\n\x08\x42\x41\x43KWARD\x10\x05\x12\x08\n\x04\x45\x41ST\x10\x06\x12\x08\n\x04WEST\x10\x07\x12\t\n\x05NORTH\x10\x08\x12\t\n\x05SOUTH\x10\t\"\xe5\x02\n\x10RobotReadRequest\x12\x35\n\x11identify_material\x18\x01 \x01(\x0b\x32\x1a.robominions.WorldLocation\x12\x35\n\x16locate_material_nearby\x18\x02 \x01(\x0b\x32\x15.robominions.Material\x12\x1e\n\x16locate_nonsolid_nearby\x18\x04 \x01(\x08\x12;\n\rlocate_entity\x18\x03 \x01(\x0e\x32$.robominions.RobotReadRequest.Entity\x12\x15\n\rget_inventory\x18\x05 \x01(\x08\x12,\n\x08is_solid\x18\x06 \x01(\x0b\x32\x1a.robominions.WorldLocation\x12\"\n\x1alocate_player_target_block\x18\x07 \x01(\x08\"\x1d\n\x06\x45ntity\x12\x08\n\x04SELF\x10\x00\x12\t\n\x05OWNER\x10\x01\"\x9c\x04\n\x12RobotActionRequest\x12<\n\x0emove_direction\x18\x02 \x01(\x0e\x32$.robominions.WorldLocation.Direction\x12<\n\x0eturn_direction\x18\x03 \x01(\x0e\x32$.robominions.WorldLocation.Direction\x12<\n\x0emine_direction\x18\x04 \x01(\x0e\x32$.robominions.WorldLocation.Direction\x12=\n\x0fplace_direction\x18\x05 \x01(\x0e\x32$.robominions.WorldLocation.Direction\x12-\n\x0eplace_material\x18\x06 \x01(\x0b\x32\x15.robominions.Material\x12\x14\n\x0c\x63hat_message\x18\x07 \x01(\t\x12\x19\n\x11is_public_message\x18\x08 \x01(\x08\x12\x35\n\x11teleport_location\x18\t \x01(\x0b\x32\x1a.robominions.WorldLocation\x12,\n\rdrop_material\x18\n \x01(\x0b\x32\x15.robominions.Material\x12\x13\n\x0b\x64rop_amount\x18\x0b \x01(\x05\x12\x33\n\x0f\x61ttack_location\x18\x0c \x01(\x0b\x32\x1a.robominions.WorldLocation\"A\n\x10LocationResponse\x12-\n\tlocations\x18\x01 \x03(\x0b\x32\x1a.robominions.WorldLocation\"Q\n\x11InventoryResponse\x12(\n\tmaterials\x18\x01 \x03(\x0b\x32\x15.robominions.Material\x12\x12\n\x06\x63ounts\x18\x02 \x03(\x05\x42\x02\x10\x01\"\xa1\x02\n\rRobotResponse\x12\x0b\n\x03key\x18\x03 \x01(\x05\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x30\n\rerror_message\x18\x02 \x01(\x0b\x32\x19.robominions.ErrorMessage\x12\x38\n\x11location_response\x18\x04 \x01(\x0b\x32\x1d.robominions.LocationResponse\x12\x30\n\x11material_response\x18\x05 \x01(\x0b\x32\x15.robominions.Material\x12:\n\x12inventory_response\x18\x06 \x01(\x0b\x32\x1e.robominions.InventoryResponse\x12\x18\n\x10\x62oolean_response\x18\x07 \x01(\x08\"\xc2\x03\n\x0c\x45rrorMessage\x12\x30\n\x06reason\x18\x01 \x01(\x0e\x32 .robominions.ErrorMessage.Reason\x12\x30\n\x06\x61\x63tion\x18\x02 \x01(\x0e\x32 .robominions.ErrorMessage.Action\x12\x0f\n\x07message\x18\x03 \x01(\t\"\xfe\x01\n\x06Reason\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x16\n\x12UNREADABLE_REQUEST\x10\x02\x12\x13\n\x0fINVALID_REQUEST\x10\x03\x12\x13\n\x0f\x42LOCK_COLLISION\x10\x04\x12\x14\n\x10OUTSIDE_OF_WORLD\x10\x05\x12\x18\n\x14ROBOT_DOES_NOT_EXIST\x10\x06\x12\x1a\n\x16\x42LOCK_IS_NOT_REACHABLE\x10\x07\x12\x18\n\x14\x42LOCK_IS_NOT_VISIBLE\x10\x08\x12\x13\n\x0fNOT_IMPLEMENTED\x10\t\x12\x18\n\x14OWNER_DOES_NOT_EXIST\x10\n\"<\n\x06\x41\x63tion\x12\x0f\n\x0b\x46\x41IL_ACTION\x10\x00\x12\x10\n\x0cRETRY_ACTION\x10\x01\x12\x0f\n\x0b\x45XIT_CLIENT\x10\x02\x42*\n\x1e\x61u.id.katharos.robominions.apiB\x08RobotApi')
+  serialized_pb=_b('\n\x0erobotapi.proto\x12\x0brobominions\x1a\x0fmaterials.proto\"\x97\x01\n\x0cRobotRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03key\x18\x02 \x01(\x05\x12\x33\n\x0cread_request\x18\x03 \x01(\x0b\x32\x1d.robominions.RobotReadRequest\x12\x37\n\x0e\x61\x63tion_request\x18\x04 \x01(\x0b\x32\x1f.robominions.RobotActionRequest\"-\n\nCoordinate\x12\t\n\x01x\x18\x01 \x02(\x05\x12\t\n\x01y\x18\x02 \x02(\x05\x12\t\n\x01z\x18\x03 \x02(\x05\"\xf5\x01\n\rWorldLocation\x12\x32\n\x11\x61\x62solute_location\x18\x01 \x01(\x0b\x32\x17.robominions.Coordinate\x12\x37\n\tdirection\x18\x02 \x01(\x0e\x32$.robominions.WorldLocation.Direction\"w\n\tDirection\x12\x06\n\x02UP\x10\x00\x12\x08\n\x04\x44OWN\x10\x01\x12\x08\n\x04LEFT\x10\x02\x12\t\n\x05RIGHT\x10\x03\x12\x0b\n\x07\x46ORWARD\x10\x04\x12\x0c\n\x08\x42\x41\x43KWARD\x10\x05\x12\x08\n\x04\x45\x41ST\x10\x06\x12\x08\n\x04WEST\x10\x07\x12\t\n\x05NORTH\x10\x08\x12\t\n\x05SOUTH\x10\t\"\xbb\x03\n\x10RobotReadRequest\x12\x35\n\x11identify_material\x18\x01 \x01(\x0b\x32\x1a.robominions.WorldLocation\x12\x35\n\x16locate_material_nearby\x18\x02 \x01(\x0b\x32\x15.robominions.Material\x12\x1e\n\x16locate_nonsolid_nearby\x18\x04 \x01(\x08\x12>\n\rlocate_entity\x18\x03 \x01(\x0e\x32\'.robominions.RobotReadRequest.BotEntity\x12\x15\n\rget_inventory\x18\x05 \x01(\x08\x12,\n\x08is_solid\x18\x06 \x01(\x0b\x32\x1a.robominions.WorldLocation\x12\"\n\x1alocate_player_target_block\x18\x07 \x01(\x08\x12\x15\n\rfind_entities\x18\x08 \x01(\x08\x12\x37\n\x16\x66ind_entities_examples\x18\t \x03(\x0b\x32\x17.robominions.RoboEntity\" \n\tBotEntity\x12\x08\n\x04SELF\x10\x00\x12\t\n\x05OWNER\x10\x01\"\x9c\x04\n\x12RobotActionRequest\x12<\n\x0emove_direction\x18\x02 \x01(\x0e\x32$.robominions.WorldLocation.Direction\x12<\n\x0eturn_direction\x18\x03 \x01(\x0e\x32$.robominions.WorldLocation.Direction\x12<\n\x0emine_direction\x18\x04 \x01(\x0e\x32$.robominions.WorldLocation.Direction\x12=\n\x0fplace_direction\x18\x05 \x01(\x0e\x32$.robominions.WorldLocation.Direction\x12-\n\x0eplace_material\x18\x06 \x01(\x0b\x32\x15.robominions.Material\x12\x14\n\x0c\x63hat_message\x18\x07 \x01(\t\x12\x19\n\x11is_public_message\x18\x08 \x01(\x08\x12\x35\n\x11teleport_location\x18\t \x01(\x0b\x32\x1a.robominions.WorldLocation\x12,\n\rdrop_material\x18\n \x01(\x0b\x32\x15.robominions.Material\x12\x13\n\x0b\x64rop_amount\x18\x0b \x01(\x05\x12\x33\n\x0f\x61ttack_location\x18\x0c \x01(\x0b\x32\x1a.robominions.WorldLocation\"A\n\x10LocationResponse\x12-\n\tlocations\x18\x01 \x03(\x0b\x32\x1a.robominions.WorldLocation\"Q\n\x11InventoryResponse\x12(\n\tmaterials\x18\x01 \x03(\x0b\x32\x15.robominions.Material\x12\x12\n\x06\x63ounts\x18\x02 \x03(\x05\x42\x02\x10\x01\"\xd7\x02\n\rRobotResponse\x12\x0b\n\x03key\x18\x03 \x01(\x05\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x30\n\rerror_message\x18\x02 \x01(\x0b\x32\x19.robominions.ErrorMessage\x12\x38\n\x11location_response\x18\x04 \x01(\x0b\x32\x1d.robominions.LocationResponse\x12\x30\n\x11material_response\x18\x05 \x01(\x0b\x32\x15.robominions.Material\x12:\n\x12inventory_response\x18\x06 \x01(\x0b\x32\x1e.robominions.InventoryResponse\x12\x18\n\x10\x62oolean_response\x18\x07 \x01(\x08\x12\x34\n\x0f\x65ntity_response\x18\x08 \x01(\x0b\x32\x1b.robominions.EntityResponse\"\x9f\x03\n\x0eRoboEntityType\x12\x45\n\x04type\x18\x01 \x01(\x0e\x32..robominions.RoboEntityType.RoboEntityTypeEnum:\x07\x43HICKEN\"\xc5\x02\n\x12RoboEntityTypeEnum\x12\x0b\n\x07\x43HICKEN\x10\x00\x12\x08\n\x03\x43OW\x10\xd7\x08\x12\t\n\x05HORSE\x10\x02\x12\n\n\x06OCELOT\x10\x03\x12\x07\n\x03PIG\x10\x04\x12\n\n\x06RABBIT\x10\x05\x12\t\n\x05SHEEP\x10\x06\x12\x08\n\x04WOLF\x10\x07\x12\x0c\n\x08VILLAGER\x10\x08\x12\x0e\n\nIRON_GOLEM\x10\t\x12\x0b\n\x07SNOWMAN\x10\n\x12\t\n\x05\x42LAZE\x10\x0b\x12\x0b\n\x07\x43REEPER\x10\x0c\x12\x0c\n\x08\x45NDERMAN\x10\r\x12\r\n\tENDERMITE\x10\x0e\x12\t\n\x05GIANT\x10\x0f\x12\x0c\n\x08GUARDIAN\x10\x10\x12\x0e\n\nSILVERFISH\x10\x11\x12\x0c\n\x08SKELETON\x10\x12\x12\n\n\x06SPIDER\x10\x13\x12\t\n\x05WITCH\x10\x14\x12\n\n\x06WITHER\x10\x15\x12\n\n\x06ZOMBIE\x10\x16\x12\x11\n\x0cUNRECOGNIZED\x10\xe7\x07\"n\n\nRoboEntity\x12)\n\x04type\x18\x01 \x01(\x0b\x32\x1b.robominions.RoboEntityType\x12)\n\x08location\x18\x02 \x01(\x0b\x32\x17.robominions.Coordinate\x12\n\n\x02id\x18\x03 \x01(\x05\";\n\x0e\x45ntityResponse\x12)\n\x08\x65ntities\x18\x01 \x03(\x0b\x32\x17.robominions.RoboEntity\"\xc2\x03\n\x0c\x45rrorMessage\x12\x30\n\x06reason\x18\x01 \x01(\x0e\x32 .robominions.ErrorMessage.Reason\x12\x30\n\x06\x61\x63tion\x18\x02 \x01(\x0e\x32 .robominions.ErrorMessage.Action\x12\x0f\n\x07message\x18\x03 \x01(\t\"\xfe\x01\n\x06Reason\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x16\n\x12UNREADABLE_REQUEST\x10\x02\x12\x13\n\x0fINVALID_REQUEST\x10\x03\x12\x13\n\x0f\x42LOCK_COLLISION\x10\x04\x12\x14\n\x10OUTSIDE_OF_WORLD\x10\x05\x12\x18\n\x14ROBOT_DOES_NOT_EXIST\x10\x06\x12\x1a\n\x16\x42LOCK_IS_NOT_REACHABLE\x10\x07\x12\x18\n\x14\x42LOCK_IS_NOT_VISIBLE\x10\x08\x12\x13\n\x0fNOT_IMPLEMENTED\x10\t\x12\x18\n\x14OWNER_DOES_NOT_EXIST\x10\n\"<\n\x06\x41\x63tion\x12\x0f\n\x0b\x46\x41IL_ACTION\x10\x00\x12\x10\n\x0cRETRY_ACTION\x10\x01\x12\x0f\n\x0b\x45XIT_CLIENT\x10\x02\x42*\n\x1e\x61u.id.katharos.robominions.apiB\x08RobotApi')
   ,
   dependencies=[materials_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -80,9 +80,9 @@ _WORLDLOCATION_DIRECTION = _descriptor.EnumDescriptor(
 )
 _sym_db.RegisterEnumDescriptor(_WORLDLOCATION_DIRECTION)
 
-_ROBOTREADREQUEST_ENTITY = _descriptor.EnumDescriptor(
-  name='Entity',
-  full_name='robominions.RobotReadRequest.Entity',
+_ROBOTREADREQUEST_BOTENTITY = _descriptor.EnumDescriptor(
+  name='BotEntity',
+  full_name='robominions.RobotReadRequest.BotEntity',
   filename=None,
   file=DESCRIPTOR,
   values=[
@@ -97,10 +97,120 @@ _ROBOTREADREQUEST_ENTITY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=826,
-  serialized_end=855,
+  serialized_start=909,
+  serialized_end=941,
 )
-_sym_db.RegisterEnumDescriptor(_ROBOTREADREQUEST_ENTITY)
+_sym_db.RegisterEnumDescriptor(_ROBOTREADREQUEST_BOTENTITY)
+
+_ROBOENTITYTYPE_ROBOENTITYTYPEENUM = _descriptor.EnumDescriptor(
+  name='RoboEntityTypeEnum',
+  full_name='robominions.RoboEntityType.RoboEntityTypeEnum',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='CHICKEN', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='COW', index=1, number=1111,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='HORSE', index=2, number=2,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='OCELOT', index=3, number=3,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PIG', index=4, number=4,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RABBIT', index=5, number=5,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SHEEP', index=6, number=6,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='WOLF', index=7, number=7,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VILLAGER', index=8, number=8,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='IRON_GOLEM', index=9, number=9,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SNOWMAN', index=10, number=10,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='BLAZE', index=11, number=11,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='CREEPER', index=12, number=12,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ENDERMAN', index=13, number=13,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ENDERMITE', index=14, number=14,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GIANT', index=15, number=15,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GUARDIAN', index=16, number=16,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SILVERFISH', index=17, number=17,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SKELETON', index=18, number=18,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SPIDER', index=19, number=19,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='WITCH', index=20, number=20,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='WITHER', index=21, number=21,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ZOMBIE', index=22, number=22,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='UNRECOGNIZED', index=23, number=999,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=2073,
+  serialized_end=2398,
+)
+_sym_db.RegisterEnumDescriptor(_ROBOENTITYTYPE_ROBOENTITYTYPEENUM)
 
 _ERRORMESSAGE_REASON = _descriptor.EnumDescriptor(
   name='Reason',
@@ -155,8 +265,8 @@ _ERRORMESSAGE_REASON = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1977,
-  serialized_end=2231,
+  serialized_start=2708,
+  serialized_end=2962,
 )
 _sym_db.RegisterEnumDescriptor(_ERRORMESSAGE_REASON)
 
@@ -181,8 +291,8 @@ _ERRORMESSAGE_ACTION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=2233,
-  serialized_end=2293,
+  serialized_start=2964,
+  serialized_end=3024,
 )
 _sym_db.RegisterEnumDescriptor(_ERRORMESSAGE_ACTION)
 
@@ -376,12 +486,26 @@ _ROBOTREADREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='find_entities', full_name='robominions.RobotReadRequest.find_entities', index=7,
+      number=8, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='find_entities_examples', full_name='robominions.RobotReadRequest.find_entities_examples', index=8,
+      number=9, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
-    _ROBOTREADREQUEST_ENTITY,
+    _ROBOTREADREQUEST_BOTENTITY,
   ],
   options=None,
   is_extendable=False,
@@ -389,7 +513,7 @@ _ROBOTREADREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=498,
-  serialized_end=855,
+  serialized_end=941,
 )
 
 
@@ -488,8 +612,8 @@ _ROBOTACTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=858,
-  serialized_end=1398,
+  serialized_start=944,
+  serialized_end=1484,
 )
 
 
@@ -518,8 +642,8 @@ _LOCATIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1400,
-  serialized_end=1465,
+  serialized_start=1486,
+  serialized_end=1551,
 )
 
 
@@ -555,8 +679,8 @@ _INVENTORYRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1467,
-  serialized_end=1548,
+  serialized_start=1553,
+  serialized_end=1634,
 )
 
 
@@ -616,6 +740,13 @@ _ROBOTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='entity_response', full_name='robominions.RobotResponse.entity_response', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -627,8 +758,113 @@ _ROBOTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1551,
-  serialized_end=1840,
+  serialized_start=1637,
+  serialized_end=1980,
+)
+
+
+_ROBOENTITYTYPE = _descriptor.Descriptor(
+  name='RoboEntityType',
+  full_name='robominions.RoboEntityType',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='robominions.RoboEntityType.type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=True, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _ROBOENTITYTYPE_ROBOENTITYTYPEENUM,
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1983,
+  serialized_end=2398,
+)
+
+
+_ROBOENTITY = _descriptor.Descriptor(
+  name='RoboEntity',
+  full_name='robominions.RoboEntity',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='robominions.RoboEntity.type', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='location', full_name='robominions.RoboEntity.location', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='id', full_name='robominions.RoboEntity.id', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2400,
+  serialized_end=2510,
+)
+
+
+_ENTITYRESPONSE = _descriptor.Descriptor(
+  name='EntityResponse',
+  full_name='robominions.EntityResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='entities', full_name='robominions.EntityResponse.entities', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2512,
+  serialized_end=2571,
 )
 
 
@@ -673,8 +909,8 @@ _ERRORMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1843,
-  serialized_end=2293,
+  serialized_start=2574,
+  serialized_end=3024,
 )
 
 _ROBOTREQUEST.fields_by_name['read_request'].message_type = _ROBOTREADREQUEST
@@ -684,9 +920,10 @@ _WORLDLOCATION.fields_by_name['direction'].enum_type = _WORLDLOCATION_DIRECTION
 _WORLDLOCATION_DIRECTION.containing_type = _WORLDLOCATION
 _ROBOTREADREQUEST.fields_by_name['identify_material'].message_type = _WORLDLOCATION
 _ROBOTREADREQUEST.fields_by_name['locate_material_nearby'].message_type = materials_pb2._MATERIAL
-_ROBOTREADREQUEST.fields_by_name['locate_entity'].enum_type = _ROBOTREADREQUEST_ENTITY
+_ROBOTREADREQUEST.fields_by_name['locate_entity'].enum_type = _ROBOTREADREQUEST_BOTENTITY
 _ROBOTREADREQUEST.fields_by_name['is_solid'].message_type = _WORLDLOCATION
-_ROBOTREADREQUEST_ENTITY.containing_type = _ROBOTREADREQUEST
+_ROBOTREADREQUEST.fields_by_name['find_entities_examples'].message_type = _ROBOENTITY
+_ROBOTREADREQUEST_BOTENTITY.containing_type = _ROBOTREADREQUEST
 _ROBOTACTIONREQUEST.fields_by_name['move_direction'].enum_type = _WORLDLOCATION_DIRECTION
 _ROBOTACTIONREQUEST.fields_by_name['turn_direction'].enum_type = _WORLDLOCATION_DIRECTION
 _ROBOTACTIONREQUEST.fields_by_name['mine_direction'].enum_type = _WORLDLOCATION_DIRECTION
@@ -701,6 +938,12 @@ _ROBOTRESPONSE.fields_by_name['error_message'].message_type = _ERRORMESSAGE
 _ROBOTRESPONSE.fields_by_name['location_response'].message_type = _LOCATIONRESPONSE
 _ROBOTRESPONSE.fields_by_name['material_response'].message_type = materials_pb2._MATERIAL
 _ROBOTRESPONSE.fields_by_name['inventory_response'].message_type = _INVENTORYRESPONSE
+_ROBOTRESPONSE.fields_by_name['entity_response'].message_type = _ENTITYRESPONSE
+_ROBOENTITYTYPE.fields_by_name['type'].enum_type = _ROBOENTITYTYPE_ROBOENTITYTYPEENUM
+_ROBOENTITYTYPE_ROBOENTITYTYPEENUM.containing_type = _ROBOENTITYTYPE
+_ROBOENTITY.fields_by_name['type'].message_type = _ROBOENTITYTYPE
+_ROBOENTITY.fields_by_name['location'].message_type = _COORDINATE
+_ENTITYRESPONSE.fields_by_name['entities'].message_type = _ROBOENTITY
 _ERRORMESSAGE.fields_by_name['reason'].enum_type = _ERRORMESSAGE_REASON
 _ERRORMESSAGE.fields_by_name['action'].enum_type = _ERRORMESSAGE_ACTION
 _ERRORMESSAGE_REASON.containing_type = _ERRORMESSAGE
@@ -713,6 +956,9 @@ DESCRIPTOR.message_types_by_name['RobotActionRequest'] = _ROBOTACTIONREQUEST
 DESCRIPTOR.message_types_by_name['LocationResponse'] = _LOCATIONRESPONSE
 DESCRIPTOR.message_types_by_name['InventoryResponse'] = _INVENTORYRESPONSE
 DESCRIPTOR.message_types_by_name['RobotResponse'] = _ROBOTRESPONSE
+DESCRIPTOR.message_types_by_name['RoboEntityType'] = _ROBOENTITYTYPE
+DESCRIPTOR.message_types_by_name['RoboEntity'] = _ROBOENTITY
+DESCRIPTOR.message_types_by_name['EntityResponse'] = _ENTITYRESPONSE
 DESCRIPTOR.message_types_by_name['ErrorMessage'] = _ERRORMESSAGE
 
 RobotRequest = _reflection.GeneratedProtocolMessageType('RobotRequest', (_message.Message,), dict(
@@ -770,6 +1016,27 @@ RobotResponse = _reflection.GeneratedProtocolMessageType('RobotResponse', (_mess
   # @@protoc_insertion_point(class_scope:robominions.RobotResponse)
   ))
 _sym_db.RegisterMessage(RobotResponse)
+
+RoboEntityType = _reflection.GeneratedProtocolMessageType('RoboEntityType', (_message.Message,), dict(
+  DESCRIPTOR = _ROBOENTITYTYPE,
+  __module__ = 'robotapi_pb2'
+  # @@protoc_insertion_point(class_scope:robominions.RoboEntityType)
+  ))
+_sym_db.RegisterMessage(RoboEntityType)
+
+RoboEntity = _reflection.GeneratedProtocolMessageType('RoboEntity', (_message.Message,), dict(
+  DESCRIPTOR = _ROBOENTITY,
+  __module__ = 'robotapi_pb2'
+  # @@protoc_insertion_point(class_scope:robominions.RoboEntity)
+  ))
+_sym_db.RegisterMessage(RoboEntity)
+
+EntityResponse = _reflection.GeneratedProtocolMessageType('EntityResponse', (_message.Message,), dict(
+  DESCRIPTOR = _ENTITYRESPONSE,
+  __module__ = 'robotapi_pb2'
+  # @@protoc_insertion_point(class_scope:robominions.EntityResponse)
+  ))
+_sym_db.RegisterMessage(EntityResponse)
 
 ErrorMessage = _reflection.GeneratedProtocolMessageType('ErrorMessage', (_message.Message,), dict(
   DESCRIPTOR = _ERRORMESSAGE,

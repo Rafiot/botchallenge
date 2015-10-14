@@ -6,5 +6,6 @@ from . import blocktypes
 Dir = robot.Dir
 Location = robot.Location
 Robot = robot.Robot
+RoboEntityType = robot.RoboEntityType
 
 BlockType = blocktypes.BlockType
