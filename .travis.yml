@@ -1,0 +1,26 @@
+language: python
+
+python:
+    - "3.3"
+    - "3.4"
+    - "3.5"
+    - "nightly"
+
+addons:
+    apt:
+        packages:
+            - protobuf-compiler
+
+install:
+    - pip install greenlet protobuf twisted
+    - pip install coveralls
+    - pip install codecov
+    - pushd proto
+    - ./gen_python.sh
+    - popd
+    - pushd client
+    - python setup.py build
+    - python setup.py install
+
+script:
+    - exit 0
